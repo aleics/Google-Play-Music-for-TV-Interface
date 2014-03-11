@@ -1,0 +1,369 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@charset 'UTF-8';
+body {
+	background-color: white;
+	}
+/*Header logo*/
+#toolbarlogo{
+	position: absolute;
+	background-color: #fb8721;
+	border: solid;
+	border-color: #fb8721;
+	border-top: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+	padding: 4px 442px 2px 15px;	
+}
+/*Music header menu logo*/
+#toolbarmusic{
+	position: absolute;
+	background-color: #fb8721;
+	padding: 20px 47px 20px 47px;
+	/*float: left;*/
+	color: white;
+	font-size: 20px;
+	font-family: sans-serif;
+	float: left;
+	top: 115px;
+
+}
+/*Menu */
+#toolbarmenu,
+#toolbarmenu ul,
+#toolbarmenu ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0px 65px 0px 0px; 
+  position: relative;
+}
+
+#toolbarmenu ul {
+  position: absolute;
+  z-index: 597;
+  float: none;
+  top: 180px;
+}
+#toolbarmenu ul li {
+  float: none;
+  vertical-align: middle;
+  padding: 0px 65px 0px 0px;
+} 
+
+#toolbarmenu ul li.hover,
+#toolbarmenu ul li:hover {
+  position: relative;
+  z-index: 599;
+  cursor: default;
+}
+
+
+#toolbarmenu ul li:hover > ul {
+  visibility: visible;
+}
+
+#toolbarmenu ul li {
+  float: none;
+}
+
+/*Arrow selection*/
+li.selected {
+  border-left: 3px solid;
+  background-color: #F6F6F6;
+  color: #fb8721;
+  border-color: #fb8721;
+}
+
+tr.selected {
+  background-color: #f6f6f6;
+  color: #fb8721;
+}
+/* .nrplaylist.selected{
+  box-shadow: 8px 8px 5px #888888;
+} */
+
+/* Custom CSS Styles */
+
+#toolbarmenu {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  width: 200px;
+}
+
+#toolbarmenu ul a,
+#toolbarmenu ul a:link,
+#toolbarmenu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+  font-weight: 300;
+}
+#toolbarmenu > ul {
+  float: left;
+  padding: 0;
+}
+#toolbarmenu ul {
+  background: #fff;
+}
+#toolbarmenu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+
+#toolbarmenu > ul > li > a {
+  padding: 10px 20px;
+}
+
+#toolbarmenu > ul > li:hover {
+  border-left: 3px solid #fb8721;
+  background: #f6f6f6;
+}
+
+
+#toolbarmenu ul li:hover > a {
+  color: #fb8721;
+}
+
+
+/*SUB MENU*/
+/* #toolbarmenu ul ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  float: left;
+}
+
+
+ #toolbarmenu > ul > li > ul > li {
+  float: none;
+  min-height: 1px;
+  line-height: 1em;
+  vertical-align: left;
+  padding: 0px 110px 0px 0px;
+}
+
+#toolbarmenu > ul > li > ul > li > a {
+  padding: 10px 20px;
+}
+
+ #toolbarmenu > ul > li > ul > li:hover{
+  border-left: 3px solid #fb8721;
+  background: #F6F6F6;
+}
+
+ #toolbarmenu > ul > li > ul > li{
+  border-left: 3px solid #d7d8da;
+}
+
+#toolbarmenu ul li ul{
+    display: none;
+}
+
+ #toolbarmenu ul li ul li a,
+#toolbarmenu ul li ul li a:link,
+#toolbarmenu ul li ul li a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+  font-weight: 300;
+}
+ */
+
+#headerboxListenNow,
+#headerboxRadio,
+#headerboxMyLibrary,
+#headerboxExplore,
+#headerboxPlaylists{
+	background-color: #fb8721;
+	font-family: 'Lato', sans-serif;
+	font-size: 24px;
+	padding: 17px 10px 17px 10px;
+	color: white;
+	position: absolute;
+	height: 30px;
+	width: 918px;
+	left: 215px;
+	top: 115px;
+	
+}
+
+
+	
+
+
+#internalbox,
+#createplaylistbox{
+	background-color: #f6f6f6;
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	padding: 5px 10px 5px 10px;
+	float: none;
+	position: absolute;
+	color: #9A9A9E;
+	left: 215px;
+	top: 190px;
+}
+
+#input_explore,
+#input_playlist{
+	background-color: #f6f6f6;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
+	float: none;
+	position: absolute;
+	color: #9A9A9E;
+	left: 215px;
+	top: 190px;
+}
+#submit_explore,
+#submit_playlist{
+	background-color: #f6f6f6;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
+	float: none;
+	position: absolute;
+	color: #9A9A9E;
+	left: 215px;
+	top: 230px;
+}
+
+#submitcreateplaylistinput
+{
+	background-color: #f6f6f6;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
+	float: none;
+	position: absolute;
+	color: #9A9A9E;
+	left: 605px;
+	top: 189px;
+}
+
+
+
+#indexbutton {
+        
+        -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+        box-shadow:inset 0px 1px 0px 0px #cf866c;
+        
+        background-color:#d0451b;
+        
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        
+        border:1px solid #942911;
+        
+        display:inline-block;
+        color:#ffffff;
+		font-family: 'Lato', sans-serif;
+        font-size:13px;
+        font-weight:normal;
+        padding:6px 24px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #854629;
+        
+    }
+#indexbutton:hover {
+        
+        background-color:#bc3315;
+    }
+#indexbutton:active {
+        position:relative;
+        top:1px;
+    }
+
+	
+/*My Songs Table*/
+#MyLibrarySongs{
+	position: absolute;
+	width: 940px;
+	left: 215px;
+	top: 190px;
+	right: 100px;
+	font-family: 'Lato', sans-serif;
+	color: #6e6e6e;
+	float: none;
+	}
+
+#MyLibrarySongs tr td{
+	height: 35px;
+	}
+#Playlist_List{
+	position: absolute;
+	width: 940px;
+	left: 215px;
+	top: 190px;
+	right: 100px;
+	font-family: 'Lato', sans-serif;
+	color: #6e6e6e;
+	float: none;
+	}
+.playlist_element,
+#plusplaylist{
+	height: 40px;
+}
+.playlist_element td a,
+.playlist_element td a:link,
+.playlist_element td a:visited {
+	color: #6e6e6e;
+	text-decoration: none;
+}
+.playlist_element td:hover > a{
+	color: #fb8721;
+}
+
+
+#BodySongs tr td a,
+#BodySongs tr td a:link,
+#BodySongs tr td a:visited {
+  color: #6e6e6e;
+  text-decoration: none;
+}
+#BodySongs tr td:hover > a {
+  color: #fb8721;
+}
+/* #MyLibrarySongs tr:nth-child(2n){
+	background-color: #f6f6f6;
+	} */
+	
+/* 	
+#footer_play{
+	position: absolute;
+	background-color: #fb8721;
+	height: 50px;
+	width: 918px;
+	left: 225px;
+	top: 500px;
+
+} */
+
+	
+#playlogo,
+#pauselogo{
+	left: 500px;
+	width: 25px;
+	height: 25px;
+	padding-left: 700px;
+}
+
+#nextlogo{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	padding-left: 30px;
+}
+
+
+#previouslogo{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	padding-left: 360px;
+}
+
+
