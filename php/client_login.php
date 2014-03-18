@@ -1,5 +1,6 @@
 <?php
 	//Functions
+	//Get the Auth Variables (SID,LSID,AUTH)
 	function GetAuthentificationVariables($body){
 		$sid_pos = strpos($body,'SID');
 		$lsid_pos = strpos($body,'LSID');
@@ -11,20 +12,19 @@
 		
 		return array($sid,$lsid,$auth);
 	}
-
+	
+	//Include the Guzzle Library
 	require '../Lib/Guzzle/aws-autoloader.php';
 	use Guzzle\Http\Client;
 	use Guzzle\Http\EntityBody;
 	use Guzzle\Http\Message\Response;
 	use Guzzle\Common\Event;
 	use Guzzle\Http\IoEmittingEntityBody;
-		
+	
+	//URL for Authentification	
 	$url = 'https://www.google.com/accounts/ClientLogin';
 		
-	//echo $_POST['user_name'];
-	//echo "\r\n";
-	//echo $_POST['password_name'];
-	//echo "\r\n";
+	//Create Client variable and make the request with his parameters
 	$client = new Client($url);
 	$request = $client->post($url, array (
 		'Content-type' => 'application/x-www-form-urlencoded'
@@ -40,28 +40,22 @@
 	try{ $response = $request->send();
 			
 	$status = $response->getStatusCode();
-		
-	//	echo $status;
-	//	echo "\r\n";	
+	
+	//Get the body of the response in string (true)		
 		$body = $response->getBody(true);
-		
+	//Send the body string to get the diferents auth variables
 		$auth_var = GetAuthentificationVariables($body);
-	//	echo $auth_var[0];
-	//	echo "\r\n"; 
-	//	echo $auth_var[1];
-	//	echo "\r\n";
-	//	echo $auth_var[2];
+	//If all is ok, go to main.php
 		header("Location: ../main.php");
+
 	}
+	//If it's not okey, send and error and return to index.php
 	catch(Guzzle\Http\Exception\BadResponseException $e){
+
 		echo 'ERROR\n';
 		echo $e->getMessage();
 		header("Location: ../index.php");
 	}
-	/*echo $response->getBody();
-	$SID = $response->getHeader('Content-type');
-	echo $SID;
-	*/
 
 	
 		
