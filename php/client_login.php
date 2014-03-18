@@ -1,7 +1,17 @@
 <?php
+
+	//Include the Guzzle Library
+	require '../Lib/Guzzle/aws-autoloader.php';
+	use Guzzle\Http\Client;
+	use Guzzle\Http\EntityBody;
+	use Guzzle\Http\Message\Response;
+	use Guzzle\Common\Event;
+	use Guzzle\Http\IoEmittingEntityBody;	
+	
 	//Functions
 	//Get the Auth Variables (SID,LSID,AUTH)
 	function GetAuthentificationVariables($body){
+
 		$sid_pos = strpos($body,'SID');
 		$lsid_pos = strpos($body,'LSID');
 		$auth_pos = strpos($body,'Auth');
@@ -13,13 +23,28 @@
 		return array($sid,$lsid,$auth);
 	}
 	
-	//Include the Guzzle Library
-	require '../Lib/Guzzle/aws-autoloader.php';
-	use Guzzle\Http\Client;
-	use Guzzle\Http\EntityBody;
-	use Guzzle\Http\Message\Response;
-	use Guzzle\Common\Event;
-	use Guzzle\Http\IoEmittingEntityBody;
+	/*function TrackList($auth_var){
+		
+		$auth = $auth_var[2];
+	
+		$tracksclient = new Client('https://www.googleapis.com/sj/v1beta1/tracks');
+		$tracksrequest = $tracksclient->post('https://www.googleapis.com/sj/v1beta1/tracks',array(
+			'Content-Type:' => 'application/json',
+			'Authorization:' => ' GoogleLogin auth='.$auth
+		),
+		array(
+		));
+		
+		$tracksresponse = $tracksrequest->send();
+		
+		$tracksbody = tracksresponse->getBody(true);
+		return $tracksbody;
+		
+	
+	}*/
+
+	//Start the session to send variables to another php files
+	session_start();
 	
 	//URL for Authentification	
 	$url = 'https://www.google.com/accounts/ClientLogin';
@@ -46,7 +71,9 @@
 	//Send the body string to get the diferents auth variables
 		$auth_var = GetAuthentificationVariables($body);
 	//If all is ok, go to main.php
-		header("Location: ../main.php");
+	//header("Location: ../main.php");
+	//$tracksbody = Tracklist($auth_var);
+	echo $auth_var[2];
 
 	}
 	//If it's not okey, send and error and return to index.php
@@ -56,4 +83,8 @@
 		echo $e->getMessage();
 		header("Location: ../index.php");
 	}
-
+	
+	//Send variables auth to another files that may need it
+	$_SESSION['authvarname'] = $auth_var;
+	
+?>
