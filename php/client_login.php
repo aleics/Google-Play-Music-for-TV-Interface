@@ -1,4 +1,6 @@
 <?php
+	//Session start to send variables to another files
+	session_start();
 
 	//Include the Guzzle Library
 	require '../Lib/Guzzle/aws-autoloader.php';
@@ -23,6 +25,14 @@
 		return array($sid,$lsid,$auth);
 	}
 	
+	function SaveAuth($auth_var){
+	
+		$myFile = 'Auth.txt';
+		$fh = fopen($myFile,'w') or die("can't open file");
+		fwrite($fh,$auth_var[2]);
+		fclose($fh);
+	}
+	
 	/*function TrackList($auth_var){
 		
 		$auth = $auth_var[2];
@@ -42,9 +52,6 @@
 		
 	
 	}*/
-
-	//Start the session to send variables to another php files
-	session_start();
 	
 	//URL for Authentification	
 	$url = 'https://www.google.com/accounts/ClientLogin';
@@ -71,10 +78,12 @@
 	//Send the body string to get the diferents auth variables
 		$auth_var = GetAuthentificationVariables($body);
 	//If all is ok, go to main.php
-	//header("Location: ../main.php");
+	header("Location: ../main.php");
 	//$tracksbody = Tracklist($auth_var);
-	echo $auth_var[2];
-
+	//echo $auth_var[2];
+	
+	SaveAuth($auth_var);
+	
 	}
 	//If it's not okey, send and error and return to index.php
 	catch(Guzzle\Http\Exception\BadResponseException $e){
@@ -85,6 +94,6 @@
 	}
 	
 	//Send variables auth to another files that may need it
-	$_SESSION['authvarname'] = $auth_var;
+	//$_SESSION['authvarname'] = $auth_var[2];
 	
 ?>
