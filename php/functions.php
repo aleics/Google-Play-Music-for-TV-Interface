@@ -49,6 +49,53 @@
 
 	}
 
+	//Function of getting the name of song, album, id, etc...
+	function GetVariableTrackList($FileName,$str){
+	
+	$myFile = fopen($FileName,"rb");
+	$input = fread($myFile,filesize($FileName));
+	
+	$lines = file($FileName);
+	$output = array();
+	foreach($lines as $lineNumber => $line){
+		if(strpos($line,$str) !== false){
+			$output[] = $line;
+		}
+	}
+	
+	fclose($myFile);
+	
+	$out = DeleteValueDescription($output,$str);
+
+	return $out;
+	}
+
+	//Function to delete name of the variable, and get only the value of the line
+	function DeleteValueDescription($input,$str){
+	
+	$middle = array();
+	$output = array();
+	$out = array();	
+	for($x=0;$x<count($input);$x++){
+			$middle[] = str_replace($str,'',$input[$x]); //delete "variable": "
+			$output[] = str_replace('",','',$middle[$x]); //delete last ",
+			$out[] = substr($output[$x],4,-1); //delete the spaces at the beginning and the end
+		}
+	return $out;
+	}
+
+
+	//Get the Matrix that we will display on MyLibrary page
+	function GetMatrixMyLibrary($titles,$artists,$albums){
+	$matrix_output = array();
+		if((sizeof($titles) == sizeof($artists)) == sizeof($albums)){
+			for($y=0;$y<sizeof($titles);$y++){
+				$matrix_output[$y] = array($titles[$y],$artists[$y],$albums[$y]);
+			}
+		}
+	return $matrix_output;
+	}
+
 	//Get all tracks list from google	
 	function get_all_tracks($auth){
 	
