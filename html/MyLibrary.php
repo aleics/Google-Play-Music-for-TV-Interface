@@ -12,7 +12,7 @@
 	</head>
 	
 	<title>Google Play for TV Box</title>
-	
+	<?php include '../php/display_mylibrary.php' ?>	
 	<body style="background: white; position: absolute; left: 60px;">
 	
 	<header>
@@ -50,7 +50,23 @@
 <table id="MyLibrarySongs">
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
-	<tr> 
+	<?
+		
+		for($y=0;$y<sizeof($songstitle);$y++){
+	?>
+		<tr>
+			<?
+			for($x=0;$x<sizeof($matrix[0]);$x++){
+			?><td> <a href='#'><span>
+			<?php
+				echo $matrix[$y][$x];
+			?></td>
+			<?
+			}
+		?></tr><?
+		}
+	?>
+	<!--<tr> 
 	<td> <a href='#'><span>Song 1</span></a> </td> <td><a href='#'><span> Artist 1 </span></a></td> <td><a href='#'><span> Album 1 </span></a></td>
 	</tr>
 	<tr> 
@@ -64,7 +80,7 @@
 	</tr>
 	<tr> 
 	<td><a href='#'><span> Song 5 </span></a></td> <td><a href='#'><span> Artist 5</span></a> </td> <td><a href='#'><span> Album 5 </span></a></td>
-	</tr>
+	</tr>-->
 </tbody>
 </thead>
 </table>

@@ -50,5 +50,11 @@
 		echo $e->getMessage();
 		header("Location: ../index.php");
 	}
+	
+
+
+	//Execute all the scripts that are needed
+	$track_list = shell_exec('php track_list.php');
+	echo "<pre>$track_list</pre>";
 		
 ?>
