@@ -12,7 +12,7 @@
 	</head>
 	
 	<title>Google Play for TV Box</title>
-	<?php include '/php/track_list.php'; ?>
+
 	<body style="background: white; position: absolute; left: 60px;">
 	
 	<header>

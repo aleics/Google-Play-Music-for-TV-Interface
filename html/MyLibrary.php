@@ -50,48 +50,18 @@
 <table id="MyLibrarySongs">
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
-	<?
-		
-		for($y=0;$y<sizeof($songstitle);$y++){
-	?>
-		<tr>
-			<?
-			for($x=0;$x<sizeof($matrix[0]);$x++){
-			?><td> <a href='#'><span>
-			<?php
-				echo $matrix[$y][$x];
-			?></td>
-			<?
-			}
-		?></tr><?
+	<?php for($y=0;$y<sizeof($songstitle);$y++){ 
+		echo "<tr>";
+		for($x=0;$x<sizeof($matrix[0]);$x++){
+			echo "<td> <a href='#'><span>".$matrix[$y][$x]."</td>";
+			} 
+		echo "</tr>";
 		}
 	?>
-	<!--<tr> 
-	<td> <a href='#'><span>Song 1</span></a> </td> <td><a href='#'><span> Artist 1 </span></a></td> <td><a href='#'><span> Album 1 </span></a></td>
-	</tr>
-	<tr> 
-	<td><a href='#'><span> Song 2 </span></a></td> <td> <a href='#'><span>Artist 2 </span></a></td> <td><a href='#'><span> Album 2</span></a> </td>
-	</tr>
-	<tr> 
-	<td><a href='#'><span> Song 3 </span></a></td> <td> <a href='#'><span>Artist 3 </span></a></td> <td><a href='#'><span>Album 3 </span></a></td>
-	</tr>
-	<tr> 
-	<td><a href='#'><span> Song 4 </span></a></td> <td><a href='#'><span> Artist 4 </span></a></td> <td><a href='#'><span> Album 4 </span></a></td>
-	</tr>
-	<tr> 
-	<td><a href='#'><span> Song 5 </span></a></td> <td><a href='#'><span> Artist 5</span></a> </td> <td><a href='#'><span> Album 5 </span></a></td>
-	</tr>-->
+	
 </tbody>
 </thead>
 </table>
-
-
-
-<form id="createplaylistform" name="createplaylistform" method="post" action="./php/prova.php">
-	<input id="createplaylistinput" name="createplaylistinputname" style="display:none; type="text">
-	<input type="submit" id="createplaylistsubmit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
-</form>
-
 
 </body>
 </html>

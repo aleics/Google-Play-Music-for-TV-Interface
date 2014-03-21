@@ -19,7 +19,7 @@
 	//Save Auth variable in one file called 'Auth.txt'
 	function SaveAuth($auth_var){
 	
-		$myFile = 'Auth.txt';
+		$myFile = '/var/www/GooglePlayWebTv/php/Auth.txt';
 		$fh = fopen($myFile,'w') or die("can't open file");
 		fwrite($fh,$auth_var[2]);
 		fclose($fh);
@@ -58,7 +58,7 @@
 	$lines = file($FileName);
 	$output = array();
 	foreach($lines as $lineNumber => $line){
-		if(strpos($line,$str) !== false){
+		if(strpos($line,$str) !== false){ //in every line that we found $str copy to array output
 			$output[] = $line;
 		}
 	}

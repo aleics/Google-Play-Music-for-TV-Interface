@@ -3,7 +3,7 @@
 	include 'functions.php';
 	
 	//Name of the file where is the track list information
-	$fileName = "TrackList.txt";
+	$fileName = "/var/www/GooglePlayWebTv/php/TrackList.txt";
 	
 	//Declaration of arrays
 	$songstitle = array();
@@ -30,6 +30,6 @@
 		echo "            ";
 		}
 		echo "\n";
-	}
+	}i*/
 
 ?>
