@@ -12,7 +12,7 @@
 	</head>
 	
 	<title>Google Play for TV Box</title>
-	<?php include '../php/display_mylibrary.php' ?>	
+	<?php include '../php/display.php' ?>	
 	<body style="background: white; position: absolute; left: 60px;">
 	
 	<header>
@@ -50,18 +50,26 @@
 <table id="MyLibrarySongs">
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
-	<?php for($y=0;$y<sizeof($songstitle);$y++){ 
-		echo "<tr>";
-		for($x=0;$x<sizeof($matrix[0]);$x++){
-			echo "<td> <a href='#'><span>".$matrix[$y][$x]."</td>";
-			} 
-		echo "</tr>";
+	<?php 
+		/*$numPage = 0;
+		if($_GET['arrow_right']!=0){
+			$numPage++;
 		}
+		else if($_GET['arrow_left']!=0){
+			$numPage--;
+		}*/
+		DisplayVariablesPerPages($matrix,2);
 	?>
 	
 </tbody>
 </thead>
 </table>
+
+<!--Arrows next/previous page-->
+
+<input type="image" src="../Images/arrow-right.jpg" id="arrow_right" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input>
+<input type="image" src="../Images/arrow-left.jpg" id="arrow_left" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5; display: none;">
+
 
 </body>
 </html>
