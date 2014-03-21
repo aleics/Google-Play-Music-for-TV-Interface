@@ -19,7 +19,7 @@
 	//Save Auth variable in one file called 'Auth.txt'
 	function SaveAuth($auth_var){
 	
-		$myFile = '/var/www/GooglePlayWebTv/php/Auth.txt';
+		$myFile = '/var/www/GooglePlayWebTv/Info/Auth.txt';
 		$fh = fopen($myFile,'w') or die("can't open file");
 		fwrite($fh,$auth_var[2]);
 		fclose($fh);
@@ -29,8 +29,8 @@
 	//Read Auth variable from a file called 'Auth.txt'
 	function ReadAuth(){
 	
-	$myFile = fopen("Auth.txt","rb");
-	$input = fread($myFile,filesize("Auth.txt"));
+	$myFile = fopen('/var/www/GooglePlayWebTv/Info/Auth.txt',"rb");
+	$input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/Auth.txt'));
 	fclose($myFile);
 
 	$auth = substr($input,strlen("Auth="));
@@ -43,7 +43,7 @@
 	//Save the whole Track list in a file called 'TrackList.txt'
 	function SaveTrackList($output){
 	
-	$myFile = fopen("TrackList.txt","w") or die("can't open the file");
+	$myFile = fopen("/var/www/GooglePlayWebTv/Info/TrackList.txt","w") or die("can't open the file");
 	fwrite($myFile,$output);
 	fclose($myFile);
 
