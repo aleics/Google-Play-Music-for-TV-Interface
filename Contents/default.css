@@ -303,6 +303,9 @@ tr.selected {
 	color: #6e6e6e;
 	float: none;
 	}
+#Playlist_List tr td{
+	height: 35px;
+}
 .playlist_element,
 #plusplaylist{
 	height: 40px;
@@ -327,6 +330,11 @@ tr.selected {
 #BodySongs tr td:hover > a {
   color: #fb8721;
 }
+
+#BodySongs tr:hover{
+  background: #f6f6f6;
+}
+
 
 /* #MyLibrarySongs tr:nth-child(2n){
 	background-color: #f6f6f6;

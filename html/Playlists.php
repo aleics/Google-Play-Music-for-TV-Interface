@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="../Scripts/ceScript_dev_0-1-4-1.js"></script>
 		<!-- <script type="text/javascript" src="../Scripts/resources.js"></script> -->
 		<?php include '../php/display_playlists.php'?>
-		<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script>
+		<!--<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script> -->
 	</head>
 	
 	<title>Google Play for TV Box</title>
@@ -40,17 +40,17 @@
 <!-- Headers of every part of the menu -->
 <header><a id="headerboxPlaylists">Playlists</a></header>
 <table id="Playlist_List">
-<tbody>
+<tbody id="BodySongs">
 	<tr class="playlist_element" id="plusplaylist"> 
 	<td><a href="./PlusPlaylist.php" name="create_playlist"><span> Create a new Playlist</span></a> </td>
 	</tr>
 	<tr class="playlist_element" id="delete_all_playlists"> 
 	<td><a href="#" name="delete_all_playlists" onclick="return confirm('Are you sure you want to delete all Playlists?')"><span> Delete all the Playlists </span></a> </td>
 	</tr>
-</tbody>
-</table>
-<table id="Playlist_List" style="top: 275px;">
-<tbody id="BodySongs">
+<!--</tbody>-->
+<!--</table>-->
+<!--<table id="Playlist_List" style="top: 275px;">-->
+<!--<tbody id="BodySongs">-->
 		<?php
 			
 	                $numPage = 0;

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../Contents/default.css">
 		<script src="../Lib/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Scripts/keycodes_mylibrary.js"></script>
+		<!--<script type="text/javascript" src="../Scripts/keycodes_mylibrary.js"></script>-->
 	</head>
 	
 	<title>Google Play for TV Box</title>
