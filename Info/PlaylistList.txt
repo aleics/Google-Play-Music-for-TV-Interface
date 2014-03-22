@@ -1,0 +1,43 @@
+{
+ "kind": "sj#playlistList",
+ "data": {
+  "items": [
+   {
+    "kind": "sj#playlist",
+    "id": "7995ad09-323b-46c0-9f21-a3611e421bf5",
+    "creationTimestamp": "1395500855360063",
+    "lastModifiedTimestamp": "1395500855360063",
+    "deleted": false,
+    "name": "Jazz",
+    "type": "USER_GENERATED"
+   },
+   {
+    "kind": "sj#playlist",
+    "id": "0f3839e6-8caa-46b3-a35b-01c6503b9d5d",
+    "creationTimestamp": "1395500986186417",
+    "lastModifiedTimestamp": "1395500986186417",
+    "deleted": false,
+    "name": "Reagge",
+    "type": "USER_GENERATED"
+   },
+   {
+    "kind": "sj#playlist",
+    "id": "150f60d5-2ffe-4934-869d-c4be825d0afa",
+    "creationTimestamp": "1395501009307642",
+    "lastModifiedTimestamp": "1395501009307642",
+    "deleted": false,
+    "name": "Hardcore/Metal",
+    "type": "USER_GENERATED"
+   },
+   {
+    "kind": "sj#playlist",
+    "id": "50e4468f-6fe5-41fe-a290-6c0618d7b70f",
+    "creationTimestamp": "1395501035032753",
+    "lastModifiedTimestamp": "1395501035032753",
+    "deleted": false,
+    "name": "Ambient",
+    "type": "USER_GENERATED"
+   }
+  ]
+ }
+}

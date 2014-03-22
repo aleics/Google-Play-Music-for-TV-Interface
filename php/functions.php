@@ -48,9 +48,18 @@
 	fclose($myFile);
 
 	}
+	
+	//Save the whole Playlist list in a file called 'PlaylistList.txt'
+	function SavePlaylistList($output){
+	
+	$myFile = fopen("/var/www/GooglePlayWebTv/Info/PlaylistList.txt","w") or die("can't open the file");
+        fwrite($myFile,$output);
+        fclose($myFile);
+	
+	}
 
 	//Function of getting the name of song, album, id, etc...
-	function GetVariableTrackList($FileName,$str){
+	function GetVariableList($FileName,$str){
 	
 	$myFile = fopen($FileName,"rb");
 	$input = fread($myFile,filesize($FileName));
@@ -112,5 +121,73 @@
 	curl_close($ch);
 
 	return $output;
-	}	
+	}
+	
+	//Get all playlists list from google
+	function get_all_playlists($auth){
+	
+	$ch = curl_init('https://www.googleapis.com/sj/v1beta1/playlists');
+	$header = 'Authorization: GoogleLogin auth='.$auth;
+	
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array($header));
+
+        $output = curl_exec($ch);
+        $status = curl_getinfo($ch);
+
+        curl_close($ch);
+
+        return $output;
+        }
+
+
+	 //Display variables per page
+        function DisplayVariablesPerPages($matrix,$num_page){
+
+        $variables_for_page = 14; //number of variables for every page
+
+        $start = 0+($variables_for_page*$num_page);
+        $end = 13+($variables_for_page*$num_page);
+
+        if($end>=sizeof($matrix)){
+                $end = sizeof($matrix);
+        }
+
+	if(is_array($matrix[0])) {
+
+        for($y=$start;$y<$end;$y++){
+                echo "<tr>";
+                for($x=0;$x<sizeof($matrix[0]);$x++){
+                        echo "<td> <a href='#'><span>".$matrix[$y][$x]."</td>";
+                }
+                echo "</tr>";
+        }
+	}
+	
+	else if(!is_array($matrix[0])){	
+	
+	for($y=$start;$y<$end;$y++){
+                echo "<tr>";
+		echo "<td> <a href='#'><span>".$matrix[$y]."</td>"; 
+		echo "</tr>";	
+
+        }
+	}
+	}
+
+
+        function ArrowPages($numPage){
+                if(isset($_POST['arrow_right'])){
+                        $numPage++;
+                }
+                else if(isset($_POST['arrow_left'])){
+                        $numPage--;
+                }
+        return $numPage;
+        }
+
+
+
+
 ?>

@@ -56,5 +56,8 @@
 	//Execute all the scripts that are needed
 	$track_list = shell_exec('php track_list.php');
 	echo "<pre>$track_list</pre>";
+	
+	$playlist_list = shell_exec('php playlist_list.php');
+	echo "<pre>$playlist_list</pre>";
 		
 ?>

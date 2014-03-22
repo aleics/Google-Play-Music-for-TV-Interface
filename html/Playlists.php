@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
 		<script type="text/javascript" src="../Scripts/ceScript_dev_0-1-4-1.js"></script>
 		<!-- <script type="text/javascript" src="../Scripts/resources.js"></script> -->
+		<?php include '../php/display_playlists.php'?>
 		<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script>
 	</head>
 	
@@ -49,17 +50,13 @@
 </tbody>
 </table>
 <table id="Playlist_List" style="top: 275px;">
-<tbody>
-		<?php include '../php/create_playlists.php'; ?>
+<tbody id="BodySongs">
 		<?php
-			foreach ($playlists as $key => $value) {
-			echo '<tr class="playlist_element" id="play_element"><td><a href="#"><span>' . $value . '</span></a></td>';
-			echo '<td>';
-			echo '<img src="../Images/play_logo.jpg" id="playlogo">';
-			echo '<img src="../Images/pause_logo.jpg" id="pauselogo" style="display:none;">';
-			echo '</td>';
-			echo '</tr>';
-		}
+			
+	                $numPage = 0;
+        	        DisplayVariablesPerPages($name,$numPage);
+		
+			
 		?>
 </tbody>
 </table>
