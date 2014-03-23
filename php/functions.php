@@ -79,6 +79,47 @@
 	return $out;
 	}
 
+	//Function to get the information (songs,ids,albumref,etc) of one variable (album,artist,etc)
+	function GetInfoOf($FileName,$str){ //$str is the variable (album,artist,etc)
+
+	}
+	
+	//Get All the info of Tracklist and organizate it in arrays
+	function GetAllTracksInfo(){
+
+	$FileName = "/var/www/GooglePlayWebTv/Info/TrackList.txt";
+	$myFile = fopen($FileName,"rb");
+	$input = fread($myFile,filesize($FileName));
+
+        $output = array();
+	$info = array();
+        $lines = file($FileName);
+        $cont = 0;
+	$end = false;
+        foreach($lines as $lineNumber => $line){
+		if(strpos($line,'"kind": "sj#track"') !== false){
+			
+			while($end == false){
+				if(strpos($line,'"albumId":') !== false){$end = true;$info[] = $line;}
+				else{$info[] = $line;}
+			}
+		$output[] = $info;
+		$info = array();
+		/*$info[] = $line;
+                	if(strpos($line,'"albumId":') !== false){
+				$output[] = $info;
+				unset($info);
+				$info = array();
+        	                $cont++;
+               		 }*/
+                }
+
+        return $output;
+	
+	}
+	}
+
+
 	//Function to delete name of the variable, and get only the value of the line
 	function DeleteValueDescription($input,$str){
 	
@@ -174,6 +215,26 @@
 
         }
 	}
+	}
+
+	function DisplayAlbumImages($matrix,$num_page){
+	
+	$images_for_page = 12;
+
+	$start = 0+($images_for_page*$num_page);
+	$end = 11+($images_for_page*$num_page);
+
+	if($end>=sizeof($matrix)){
+		$end = sizeof($matrix);
+	}
+	
+	for($y=$start;$y<$end;$y++){
+		echo "<tr>";
+                echo "<td> <img src=".$matrix[$y]." alt=''> </td>";
+                echo "</tr>";
+	}
+	
+	
 	}
 
 
