@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php 
+      if(!file_exists('/var/www/GooglePlayWebTv/Info/Auth.txt')){ header('Location: ../index.php'); }
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,7 +12,7 @@
 		<script src="../Lib/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
 		<script type="text/javascript" src="../Scripts/ceScript_dev_0-1-4-1.js"></script>
-		<!-- <script type="text/javascript" src="../Scripts/resources.js"></script> -->
+		<script type="text/javascript" src="../Scripts/resources.js"></script>
 		<?php include '../php/display_playlists.php'?>
 		<!--<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script> -->
 	</head>
@@ -20,6 +23,7 @@
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
+	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -45,7 +49,7 @@
 	<td><a href="./PlusPlaylist.php" name="create_playlist"><span> Create a new Playlist</span></a> </td>
 	</tr>
 	<tr class="playlist_element" id="delete_all_playlists"> 
-	<td><a href="#" name="delete_all_playlists" onclick="return confirm('Are you sure you want to delete all Playlists?')"><span> Delete all the Playlists </span></a> </td>
+	<td><a href="#" name="delete_all_playlists"><span> Delete all the Playlists </span></a> </td>
 	</tr>
 <!--</tbody>-->
 <!--</table>-->

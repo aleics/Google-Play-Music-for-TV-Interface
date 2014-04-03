@@ -1,4 +1,8 @@
 <!DOCTYPE HTML>
+<?php include './php/functions.php';
+	$isauth = isAuth();
+	if(!isAuth()){ header('Location: index.php'); }
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,8 +11,11 @@
         <style> .removed{display:none!important;} .invisible{visibility:hidden!important;width:0px!important;height:0px!important;overflow:hidden!important;}</style>
         <link rel="stylesheet" href="./Contents/default.css">
 		<script src="./Lib/jquery-2.0.3.js"></script>
- 		<script type="text/javascript" src="./Scripts/menu_jquery.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 		<script type="text/javascript" src="./Lib/menu_jquery.js"></script>
 		<script type="text/javascript" src="./Scripts/keycodes.js"></script>
+		<script type="text/javascript" src="./Scripts/resources.js"></script>
+		
 	</head>
 	
 	<title>Google Play for TV Box</title>
@@ -17,6 +24,9 @@
 	
 	<header>
 	<img src="./Images/google_toolbar.jpg" id="toolbarlogo">
+	<form action="index.php" method="post">
+	<input type="image" name="submit" src="./Images/logoutbutton.jpg" class="button" id="logoutbutton" name='logout' value='logout' onclick="logout()">
+	</form>
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -29,6 +39,7 @@
 			<li><a href='#' id="Radio"><span>Radio</span></a></li>
 			<li><a href='./html/Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='./html/Playlists.php' id="Playlists"><span>Playlists</span></a>
+
         <!-- <ul>
             <li><a class='#'><span>Rock</span></a></li>
 			<li><a class='#'><span>Pop</span></a></li>

@@ -9,19 +9,18 @@
         use Guzzle\Http\IoEmittingEntityBody;
 
 	
-	//$base_url = "https://play.google.com/music/";
-	//$service_url = base_url + "services/";
+	$base_url = "https://play.google.com/music/";
+	$service_url = $base_url + "services/";
 
 	$songids = array();
 	$songids = GetVariableList('/var/www/GooglePlayWebTv/Info/TrackList.txt','"id": "');
 
-	//$sig = GetStreamUrl($songids[0]);
-
 	//$streamurl =  base64url_encode(hash_hmac("sha1","3b5b5ac0-c959-3ceb-a180-016013914492"."67plmd49qzzo","27f7313e-f75d-445a-ac99-56386a5fe879",true));
+
 	$streamurl = GetStreamUrl($songids[0]);
-	echo $streamurl;
+	echo $streamurl['sig'];
 	echo "\n";
-	echo $songids[0];
+	echo $streamurl['songid'];
 	echo "\n";
 	
 
@@ -38,8 +37,16 @@
 
 	$sig =  base64url_encode(hash_hmac("sha1",$data,$key,true));
 
-	return $sig;
-	
+	$params = array('u'=>0,'pt'=>'e','slt'=>$salt,'sig'=>$sig);
+
+	if($songid[0] == 'T'){
+		$params['mjck'] = $songid;
+	}
+	else{
+		$params['songid'] = $songid;
+	}
+
+	return $params;
 	
 	}
 

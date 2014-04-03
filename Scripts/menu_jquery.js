@@ -63,14 +63,7 @@ function show_PlayFooter(){
 	$('#previouslogo').show();
 }
 
-
-
-
-
-
-
-
- function show_ListenNow(){
+function show_ListenNow(){
 	$('#headerboxListenNow').show();
 	$('#headerboxPlaylists').hide();
 	$('#headerboxExplore').hide();

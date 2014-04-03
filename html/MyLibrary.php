@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+	if(!file_exists('/var/www/GooglePlayWebTv/Info/Auth.txt')){ header('Location: ../index.php'); }
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -12,12 +15,12 @@
 	</head>
 	
 	<title>Google Play for TV Box</title>
-	<?php include '../php/display_tracks.php' 
-	      //include '../php/functions.php' ?>
+	<?php include '../php/display_tracks.php'; ?>
 	<body style="background: white; position: absolute; left: 60px;">
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
+	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -52,7 +55,7 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
 	<?php
-		$numPage = 0; 
+		$numPage = 8; 
 		DisplayVariablesPerPages($matrix,$numPage);
 	
 echo "</tbody>";

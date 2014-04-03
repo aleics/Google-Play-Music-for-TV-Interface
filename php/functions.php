@@ -25,6 +25,11 @@
 		fclose($fh);
 	}
 
+	
+	//Check if the user is Authentificated
+	function isAuth(){
+	return file_exists('/var/www/GooglePlayWebTv/Info/Auth.txt');
+	}
 
 	//Read Auth variable from a file called 'Auth.txt'
 	function ReadAuth(){
@@ -217,6 +222,8 @@
 	}
 	}
 
+
+	//NOT FINISHED
 	function DisplayAlbumImages($matrix,$num_page){
 	
 	$images_for_page = 12;
@@ -237,7 +244,7 @@
 	
 	}
 
-
+	//NOT FINISHED
         function ArrowPages($numPage){
                 if(isset($_POST['arrow_right'])){
                         $numPage++;
@@ -247,8 +254,5 @@
                 }
         return $numPage;
         }
-
-
-
 
 ?>
