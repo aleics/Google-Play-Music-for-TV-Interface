@@ -1,4 +1,3 @@
-
 function logout(){
 	var x = document.getElementById("logoutbutton");
 	//alert("pressed");
