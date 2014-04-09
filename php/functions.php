@@ -205,7 +205,13 @@
         for($y=$start;$y<$end;$y++){
                 echo "<tr>";
                 for($x=0;$x<sizeof($matrix[0]);$x++){
-                        echo "<td> <a href='#'><span>".$matrix[$y][$x]."</td>";
+                      
+			if(($x%3)==0){
+				 echo "<td><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'><span>".$matrix[$y][$x]."</td>";
+			}
+			else{
+				 echo "<td><a href='#'><span>".$matrix[$y][$x]."</td>";
+			}
                 }
                 echo "</tr>";
         }

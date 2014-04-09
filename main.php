@@ -36,7 +36,6 @@
 		<ul id='toolbarmenu'>
 			<li><a href='./main.php' id="ListenNow"><span>Listen Now</span></a></li>
 			<li><a href='./html/MyLibrary.php' id="MyLibrary"><span>My Library</span></a></li>
-			<li><a href='#' id="Radio"><span>Radio</span></a></li>
 			<li><a href='./html/Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='./html/Playlists.php' id="Playlists"><span>Playlists</span></a>
 

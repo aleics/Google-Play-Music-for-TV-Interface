@@ -383,3 +383,12 @@ tr.selected {
 	text-decoration: underline;
 	
 }
+
+.buttontracklist{
+	width: 25px;
+	height: 25px;
+	padding-right: 10px;
+	top: 1px;
+
+}
+
