@@ -345,21 +345,6 @@ tr.selected {
 }
 
 
-/* #MyLibrarySongs tr:nth-child(2n){
-	background-color: #f6f6f6;
-	} */
-	
-/* 	
-#footer_play{
-	position: absolute;
-	background-color: #fb8721;
-	height: 50px;
-	width: 918px;
-	left: 225px;
-	top: 500px;
-
-} */
-
 	
 #playlogo,
 #pauselogo{
@@ -384,4 +369,17 @@ tr.selected {
 	padding-left: 360px;
 }
 
+#needhelp{
+	text-decoration: none;
+	color: #f3f3f3; 
+	position: absolute;
+	left: 602px;
+	top: 355px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;	
+}
 
+#needhelp:hover{
+	text-decoration: underline;
+	
+}

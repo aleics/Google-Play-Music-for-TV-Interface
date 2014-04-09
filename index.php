@@ -20,6 +20,7 @@
 	<button type="submit" id="indexbutton" style="position: absolute; left: 970px; top: 325px; float: left; " href="./main.html">Enter</button>
 	</form>
 	
+	<a id="needhelp" href="https://www.google.de/accounts/recovery/">Need help?</a>
 	
 	</body>
 </html>
