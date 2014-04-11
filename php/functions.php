@@ -192,7 +192,6 @@
         function DisplayVariablesPerPages($matrix,$num_page){
 	
 	//$num_page = Pages();
-	
         $variables_for_page = 14; //number of variables for every page
 
         $start = 0+($variables_for_page*$num_page);
@@ -224,10 +223,22 @@
 	for($y=$start;$y<$end;$y++){
                 echo "<tr>";
 		echo "<td> <a href='#'><span>".$matrix[$y]."</td>"; 
-		echo "</tr>";	
+		echo "</tr>";
 
         }
 	}
+	}
+
+	function NumberOfPages($matrix){
+	
+	$numberelements = 0;
+        
+	for($x=0;$x<sizeof($matrix);$x++){
+		$numberelements++;
+	}
+	$numberpages = round($numberelements/14)-1;
+	return $numberpages;
+	
 	}
 	
 	//NOT FINISHED

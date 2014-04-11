@@ -57,7 +57,7 @@
 <tbody id="BodySongs">
 	<?php
 		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
-		DisplayVariablesPerPages($matrix,1);
+		DisplayVariablesPerPages($matrix,0);
 	?>
 </tbody>;
 </thead>;
