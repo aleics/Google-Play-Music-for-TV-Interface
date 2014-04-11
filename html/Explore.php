@@ -17,6 +17,7 @@
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
+	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>

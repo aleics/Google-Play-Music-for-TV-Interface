@@ -329,7 +329,6 @@ tr.selected {
 	color: #fb8721;
 }
 
-
 #BodySongs tr td a,
 #BodySongs tr td a:link,
 #BodySongs tr td a:visited {
@@ -394,7 +393,7 @@ tr.selected {
 
 #morebutton{
 	position: absolute;
-	left: 250px;
+	left: 290px;
 }
 #morebutton:hover{
 	border-style: solid;

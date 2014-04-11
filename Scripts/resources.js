@@ -12,6 +12,52 @@ function logout(){
    	});
 };
 
+$(document).ready(function () {
+
+var value = 0;
+
+        $('.arrowbtn').click(function(e){
+		
+		if($(this).attr('value') == 1){value++;}
+		else if($(this).attr('value') == -1){value--;}
+        
+		if(value>0){$("#arrowbtnleft").show(); }    	
+		else if(value==0){$("#arrowbtnleft").hide(); }
+	 
+                e.preventDefault();
+                $.ajax({
+                type: "POST",
+                url: "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/php/ajax.php",
+                data: { 'value': value },
+                success: function(msg){
+                   //alert('Success!');
+                },
+		error: function(msg){
+			alert('Error!');
+		}
+		});
+        });
+
+	/*$('#arrowbtnleft').click(function(e){
+
+                var left =  $(this).attr('value');
+		value--;
+                e.preventDefault();
+                $.ajax({
+                type: "POST",
+                url: "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/php/ajax.php",
+                data: { 'value': value },
+                success: function(msg){
+                   alert('Success!');
+                },
+                error: function(msg){
+                        alert('Error!');
+                }
+                });
+        });*/
+
+
+});
 
 
 /*function send(){

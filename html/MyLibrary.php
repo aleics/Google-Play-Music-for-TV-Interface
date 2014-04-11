@@ -9,14 +9,15 @@
         <title>Google Play TV Box</title>
         <style> .removed{display:none!important;} .invisible{visibility:hidden!important;width:0px!important;height:0px!important;overflow:hidden!important;}</style>
         <link rel="stylesheet" href="../Contents/default.css">
-		<script src="../Lib/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
 		<script type="text/javascript" src="../Scripts/resources.js"></script>
 		<!--<script type="text/javascript" src="../Scripts/keycodes_mylibrary.js"></script>-->
 	</head>
 	
 	<title>Google Play for TV Box</title>
-	<?php include '../php/display_tracks.php'; ?>
+
 	<body style="background: white; position: absolute; left: 60px;">
 	
 	<header>
@@ -55,28 +56,20 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
 	<?php
-		$numPage = 8; 
-		DisplayVariablesPerPages($matrix,$numPage);
-	
-echo "</tbody>";
-echo "</thead>";
-echo "</table>";
+		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
+		DisplayVariablesPerPages($matrix,1);
+	?>
+</tbody>;
+</thead>;
+</table>;
 
-//<!--Arrows next/previous page-->
-//echo '<form action="" method="POST">';
-echo '<input type="image" src="../Images/arrow-right.jpg" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input>';
-echo '<input type="image" src="../Images/arrow-left.jpg" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5; display: none;">';
-//echo '</form>';
+<!--Arrows next/previous page-->
+<form action="javascript:void(0)" method="POST">
+<input type="image" src="../Images/arrow-right.jpg" id="arrowbtnright" value="1" class="arrowbtn" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input>
 
-//<?php
-        /* if($_POST['arrowr_x']!=0){	
-		echo '<input type="image" src="../Images/arrow-left.jpg" name="arrow_left" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5;>';
-                $numPage++;
-                }
-         else if($_POST['arrowl_x']!=0){
-                        $numPage--;
-                }*/
 
-?>
+<form action="javascript:void(0)" method="POST">
+<input type="image" src="../Images/arrow-left.jpg" id="arrowbtnleft" value="-1" class="arrowbtn" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5; display: none;">
+
 </body>
 </html>

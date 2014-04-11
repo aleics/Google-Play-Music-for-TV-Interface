@@ -50,7 +50,6 @@
 		echo $e->getMessage();
 		header("Location: ../index.php");
 	}
-	
 
 
 	//Execute all the scripts that are needed

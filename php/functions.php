@@ -1,6 +1,6 @@
 <?php
 	//functions needed
-	
+	include 'ajax.php';		
 	//Get the Auth Variables (SID,LSID,AUTH)
 	function GetAuthentificationVariables($body){
 
@@ -190,7 +190,9 @@
 
 	 //Display variables per page
         function DisplayVariablesPerPages($matrix,$num_page){
-
+	
+	//$num_page = Pages();
+	
         $variables_for_page = 14; //number of variables for every page
 
         $start = 0+($variables_for_page*$num_page);
@@ -207,7 +209,7 @@
                 for($x=0;$x<sizeof($matrix[0]);$x++){
                       
 			if(($x%3)==0){
-				 echo "<td><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'><span>".$matrix[$y][$x]."<input type='image' id='morebutton' src='../Images/more.png'></td>";
+				 echo "<td style='width: 350px;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'><span>".$matrix[$y][$x]."<input type='image' id='morebutton' src='../Images/more.png'></td>";
 			}
 			else{
 				 echo "<td><a href='#'><span>".$matrix[$y][$x]."</td>";
@@ -227,7 +229,14 @@
         }
 	}
 	}
-
+	
+	//NOT FINISHED
+	function DisplayArrows(){
+	$page = 1;
+	if($page>0){
+		 echo '<input type="image" src="../Images/arrow-left.jpg" name="arrow_left" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5;>';
+		}
+	}
 
 	//NOT FINISHED
 	function DisplayAlbumImages($matrix,$num_page){
@@ -250,15 +259,5 @@
 	
 	}
 
-	//NOT FINISHED
-        function ArrowPages($numPage){
-                if(isset($_POST['arrow_right'])){
-                        $numPage++;
-                }
-                else if(isset($_POST['arrow_left'])){
-                        $numPage--;
-                }
-        return $numPage;
-        }
 
 ?>
