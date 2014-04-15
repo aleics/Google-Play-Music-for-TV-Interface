@@ -14,23 +14,23 @@ function logout(){
 
 $(document).ready(function () {
 
-var value = 0;
-
+var page = 0;
         $('.arrowbtn').click(function(e){
 		
-		if($(this).attr('value') == 1){value++;}
-		else if($(this).attr('value') == -1){value--;}
+		if($(this).attr('value') == 1){page++;}
+		else if($(this).attr('value') == -1){page--;}
         
-		if(value>0){$("#arrowbtnleft").show(); }    	
-		else if(value==0){$("#arrowbtnleft").hide(); }
+		if(page>0){$("#arrowbtnleft").show(); }    	
+		else if(page==0){$("#arrowbtnleft").hide(); }
+		else if(page=maxPages){$('#arrowbtnright').hide();}		
 	 
                 e.preventDefault();
                 $.ajax({
-                type: "POST",
-                url: "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/php/ajax.php",
-                data: { 'value': value },
+                type: "GET",
+                url: "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php",
+                data: { page: page },
                 success: function(msg){
-                   //alert('Success!');
+                   alert(msg);
                 },
 		error: function(msg){
 			alert('Error!');

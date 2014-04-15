@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Scripts/resources.js"></script>
+		<!--<script type="text/javascript" src="../Scripts/resources.js"></script>-->
 		<!--<script type="text/javascript" src="../Scripts/keycodes_mylibrary.js"></script>-->
 	</head>
 	
@@ -57,19 +57,37 @@
 <tbody id="BodySongs">
 	<?php
 		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
-		DisplayVariablesPerPages($matrix,0);
+
+		if(isset($_GET['page'])){
+                $num_page = $_GET['page'];
+                DisplayVariablesPerPages($matrix,$num_page);
+		$path = '?page='.$_GET['page'];
+        	}	
+
+        else{
+                echo "<p>Error</p>";
+        }
 	?>
 </tbody>;
 </thead>;
 </table>;
 
+
 <!--Arrows next/previous page-->
-<form action="javascript:void(0)" method="POST">
+
+
+<?php echo '<a href="?page=1">';?>
+<!--<form action="javascript:void(0)" method="POST">-->
 <input type="image" src="../Images/arrow-right.jpg" id="arrowbtnright" value="1" class="arrowbtn" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input>
+<!--</form>-->
+</a>
 
-
-<form action="javascript:void(0)" method="POST">
+<?php echo '<a href="?page=' .$num_page  . '">'?>
+<!--<form action="javascript:void(0)" method="POST">-->
 <input type="image" src="../Images/arrow-left.jpg" id="arrowbtnleft" value="-1" class="arrowbtn" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5; display: none;">
+</input>
+<!--</form>-->
+</a>
 
 </body>
 </html>
