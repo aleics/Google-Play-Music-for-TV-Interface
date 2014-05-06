@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<!--<script type="text/javascript" src="../Scripts/resources.js"></script>-->
+		<script type="text/javascript" src="../Scripts/resources.js"></script>
 		<!--<script type="text/javascript" src="../Scripts/keycodes_mylibrary.js"></script>-->
 	</head>
 	
@@ -31,7 +31,7 @@
 	<div id='toolbarmenu'>
 		<ul id='toolbarmenu'>
 			<li><a href='../main.php' id="ListenNow"><span>Listen Now</span></a></li>
-			<li><a href='MyLibrary.php' id="MyLibrary"><span>My Library</span></a></li>
+			<li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php' id="Playlists"><span>Playlists</span></a>
         <!-- <ul>
@@ -58,15 +58,13 @@
 	<?php
 		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
 
+
 		if(isset($_GET['page'])){
                 $num_page = $_GET['page'];
                 DisplayVariablesPerPages($matrix,$num_page);
-		$path = '?page='.$_GET['page'];
         	}	
 
-        else{
-                echo "<p>Error</p>";
-        }
+	
 	?>
 </tbody>;
 </thead>;
@@ -74,19 +72,29 @@
 
 
 <!--Arrows next/previous page-->
+<?php 
+
+$num_page_next = $num_page+1;
+
+if($num_page_next > NumberOfPages($matrix)){
+	$num_page_next = $num_page;
+}
+
+?>
+<?php echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_next.'">';?>
+<input type="image" src="../Images/arrow-right.jpg" id="arrowbtnright" value="1" class="arrowbtn" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input></a>
 
 
-<?php echo '<a href="?page=1">';?>
-<!--<form action="javascript:void(0)" method="POST">-->
-<input type="image" src="../Images/arrow-right.jpg" id="arrowbtnright" value="1" class="arrowbtn" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input>
-<!--</form>-->
-</a>
+<?php $num_page_prev = $num_page-1;
 
-<?php echo '<a href="?page=' .$num_page  . '">'?>
-<!--<form action="javascript:void(0)" method="POST">-->
-<input type="image" src="../Images/arrow-left.jpg" id="arrowbtnleft" value="-1" class="arrowbtn" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5; display: none;">
+if($num_page_prev == 0){
+	$num_page_prev = $num_page;
+}
+
+?>
+<?php echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_prev.'">';?>
+<input type="image" src="../Images/arrow-left.jpg" id="arrowbtnleft" value="-1" class="arrowbtn" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5;">
 </input>
-<!--</form>-->
 </a>
 
 </body>

@@ -191,12 +191,6 @@
 	 //Display variables per page
         function DisplayVariablesPerPages($matrix,$num_page){
 	
-	//$value = $_POST['value'];
-        //$page = $page + $value;
-	//$num_page = $page;
-	
-	//echo "<script>javascript: alert('test msgbox')></script>";
-	//$num_page = Pages();
         $variables_for_page = 14; //number of variables for every page
 
         $start = 0+($variables_for_page*$num_page);

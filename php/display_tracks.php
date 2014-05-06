@@ -23,13 +23,4 @@
 	
 	//Creating the Matrix that we will displace on MyLibrary.html
 	$matrix =  GetMatrixMyLibrary($songstitle,$songsartist,$songsalbum);
-
-	/*if(isset($_GET['page'])){
-		$num_page = $_GET['page'];
-	        DisplayVariablesPerPages($matrix,$num_page);	
-	}
-
-	else{
-		echo "<p>Error</p>";
-	}*/
 ?>

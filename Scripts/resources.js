@@ -12,31 +12,48 @@ function logout(){
    	});
 };
 
-$(document).ready(function () {
+/*$(document).ready(function () {
 
 var page = 0;
         $('.arrowbtn').click(function(e){
+
+                if($(this).attr('value') == 1){page++;}
+                else if($(this).attr('value') == -1){page--;}
+
+                if(page>0){$("#arrowbtnleft").show(); }
+                else if(page==0){$("#arrowbtnleft").hide(); }
+                else if(page=maxPages){$('#arrowbtnright').hide();}
+
+	
+		window.location.href = "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page=" + page;
+	
+
+});
+
+
+});*/
+
+
+
+$(document).ready(function () {
 		
-		if($(this).attr('value') == 1){page++;}
-		else if($(this).attr('value') == -1){page--;}
-        
-		if(page>0){$("#arrowbtnleft").show(); }    	
-		else if(page==0){$("#arrowbtnleft").hide(); }
-		else if(page=maxPages){$('#arrowbtnright').hide();}		
+	if($('#arrowbtnleft').attr('value').val < 0) $("#arrowbtnleft").hide()
 	 
-                e.preventDefault();
-                $.ajax({
-                type: "GET",
-                url: "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php",
-                data: { page: page },
-                success: function(msg){
-                   alert(msg);
-                },
-		error: function(msg){
-			alert('Error!');
-		}
-		});
-        });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/*$('#arrowbtnleft').click(function(e){
 
@@ -55,9 +72,6 @@ var page = 0;
                 }
                 });
         });*/
-
-
-});
 
 
 /*function send(){
