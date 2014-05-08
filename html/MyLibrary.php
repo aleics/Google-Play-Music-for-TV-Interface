@@ -58,12 +58,14 @@
 	<?php
 		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
 
-
+		//Display the variables depending of the value of "page" in the url
 		if(isset($_GET['page'])){
                 $num_page = $_GET['page'];
                 DisplayVariablesPerPages($matrix,$num_page);
         	}	
-
+		
+		//The final page
+		$max_pages = NumberOfPages($matrix);
 	
 	?>
 </tbody>;
@@ -72,30 +74,59 @@
 
 
 <!--Arrows next/previous page-->
+
+<!--The num_page can't be higher than the number of pages-->
 <?php 
 
 $num_page_next = $num_page+1;
 
 if($num_page_next > NumberOfPages($matrix)){
 	$num_page_next = $num_page;
+	$last_page = $num_page;
 }
 
 ?>
+
+<!--Right arrow-->
 <?php echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_next.'">';?>
 <input type="image" src="../Images/arrow-right.jpg" id="arrowbtnright" value="1" class="arrowbtn" name="arrowr" width="40" height="40" style="position: absolute; top: 740px; left: 1110px; opacity: 0.5;"></input></a>
 
 
+
+<!--The num_page can't be lower than 0-->
 <?php $num_page_prev = $num_page-1;
 
-if($num_page_prev == 0){
+if($num_page_prev < 0){
 	$num_page_prev = $num_page;
 }
 
 ?>
+
+<!--Left arrow-->
 <?php echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_prev.'">';?>
 <input type="image" src="../Images/arrow-left.jpg" id="arrowbtnleft" value="-1" class="arrowbtn" name="arrowl" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5;">
 </input>
 </a>
+
+
+
+<!--Script to show or hide the arrows on the limits page (0 and final page)-->
+<script language="javascript" type="text/javascript">
+    var max_pages = "<?php echo $max_pages ?>";
+    var last_page = "<?php echo $last_page ?>";
+    var num_page = "<?php echo $num_page?>";
+
+
+    if(max_pages == last_page){
+	$("#arrowbtnleft").show();
+	$("#arrowbtnright").hide();
+	}
+    else if(num_page == "0"){
+	$("#arrowbtnleft").hide();
+        $("#arrowbtnright").show();
+	}
+</script>
+
 
 </body>
 </html>
