@@ -26,8 +26,8 @@
 	<div id='toolbarmenu'>
 		<ul id='toolbarmenu'>
 			<li><a href='../main.php' id="ListenNow"><span>Listen Now</span></a></li>
-			<li><a href='MyLibrary.php' id="MyLibrary"><span>My Library</span></a></li>
-			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
+			<li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
+			<li><a href='Explore.php?search=' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php' id="Playlists"><span>Playlists</span></a>
         <!-- <ul>
             <li><a class='#'><span>Rock</span></a></li>

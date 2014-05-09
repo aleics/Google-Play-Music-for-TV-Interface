@@ -26,7 +26,7 @@
 	<div id='toolbarmenu'>
 		<ul id='toolbarmenu'>
 			<li><a href='../main.php' id="ListenNow"><span>Listen Now</span></a></li>
-			<li><a href='MyLibrary.php' id="MyLibrary"><span>My Library</span></a></li>
+			<li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php' id="Playlists"><span>Playlists</span></a>
         <!-- <ul>
@@ -41,11 +41,13 @@
 </div>
 
 	<header><a id="headerboxExplore">Explore</a></header>
-	<form>
-		<input type="text" id="input_explore" value="Search a song"><br>
-		<input type="submit" id="submit_explore" style="" value="Submit">
+
+	<form enctype="multipart/form-data"  method="get" action="Search.php" name="test">
+		 <input name="search" type="text" id="input_explore"><br>
+		 <input  name="submit_explore" value="Go" type="submit" id="submit_explore">
+		 <input name="page" value="0">
 	</form>
 
-
+ 
 </body>
 </html>
