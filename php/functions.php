@@ -189,12 +189,10 @@
 
 
 	 //Display variables per page
-        function DisplayVariablesPerPages($matrix,$num_page){
-	
-        $variables_for_page = 14; //number of variables for every page
+        function DisplayVariablesPerPages($matrix,$num_page,$variables_for_page){	    
 
         $start = 0+($variables_for_page*$num_page);
-        $end = 13+($variables_for_page*$num_page);
+        $end = ($variables_for_page-1)+($variables_for_page*$num_page);
 
         if($end>=sizeof($matrix)){
                 $end = sizeof($matrix);
@@ -235,18 +233,64 @@
 	for($x=0;$x<sizeof($matrix);$x++){
 		$numberelements++;
 	}
-	$numberpages = round($numberelements/14)-1;
+	$numberpages = floor($numberelements/14);
 	return $numberpages;
 	
 	}
+
+	function SearchSong($name,$matrix){
 	
-	//NOT FINISHED
-	function DisplayArrows(){
-	$page = 1;
-	if($page>0){
-		 echo '<input type="image" src="../Images/arrow-left.jpg" name="arrow_left" width="40" height="40" style="position: absolute; top: 740px; left: 220px; opacity: 0.5;>';
+	$number_all_songs = sizeof($matrix);
+	$song_album_artist = sizeof($matrix[0]);
+	$found = false;
+
+	$cont_founds = 0;
+	$all_songs_found = array();	
+
+	 for($y=0;$y<$number_all_songs;$y++){
+                for($x=0;$x<$song_album_artist;$x++){
+		
+			if($name == $matrix[$y][$x]){
+				$found = true;
+				$song_found = $matrix[$y];
+	
+				$all_songs_found[$cont_founds] = $song_found;
+				$cont_founds++;
+				
+				
+				}
+
 		}
 	}
+	
+	return $all_songs_found;
+
+	}
+
+
+	function DisplayPlaylistsSubmenu($playlists){
+	echo "<ul>";
+	for($i=0;$i<sizeof($playlists);$i++){
+		
+		echo "<li><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."'>".$playlists[$i]."</a></li>";
+	
+	}
+	echo "</ul>";
+	}
+
+
+
+	/*function logout(){
+
+	 if(isset($_GET['logout'])){
+
+                $logout = $_GET['logout'];
+		if($logout == "yes"){
+			header('Location: index.php');
+		}
+         }	
+
+	}*/
 
 	//NOT FINISHED
 	function DisplayAlbumImages($matrix,$num_page){
