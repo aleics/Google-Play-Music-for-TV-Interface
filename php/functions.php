@@ -186,7 +186,26 @@
 
         return $output;
         }
+	
 
+	//Get the songs list of every playlist from google
+	function get_all_songs_of_playlists($auth){
+	
+	$ch = curl_init('https://www.googleapis.com/sj/v1beta1/plentries');
+        $header = 'Authorization: GoogleLogin auth='.$auth;
+
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array($header));
+
+        $output = curl_exec($ch);
+        $status = curl_getinfo($ch);
+
+        curl_close($ch);
+
+        return $output;
+
+	}
 
 	 //Display variables per page
         function DisplayVariablesPerPages($matrix,$num_page,$variables_for_page){	    
@@ -272,7 +291,7 @@
 	echo "<ul>";
 	for($i=0;$i<sizeof($playlists);$i++){
 		
-		echo "<li><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."'>".$playlists[$i]."</a></li>";
+		echo "<li id='submenuplaylists'><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."'>".$playlists[$i]."</a></li>";
 	
 	}
 	echo "</ul>";

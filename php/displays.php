@@ -3,16 +3,6 @@
 	//Include the functions library
         include 'functions.php';
 
-	$matrix = DisplayTracks();
-
-	$name = DisplayPlaylists();	
-
-
-
-
-
-
-
 	function DisplayPlaylists(){
 
         //Name of the file where is the playlist list information
@@ -29,8 +19,6 @@
         return $name = GetVariableList($fileName,$str_name);
 
 	}
-
-
 
 
 	
@@ -59,6 +47,15 @@
         $matrix =  GetMatrixMyLibrary($songstitle,$songsartist,$songsalbum);
 	
 	return $matrix;
+	}
+
+	
+	function DisplaySongsOfPlaylists($playlistname){
+
+	$fileTracks = "/var/www/GooglePlayWebTv/Info/TrackList.txt";
+
+	
+
 	}
 
 ?>
