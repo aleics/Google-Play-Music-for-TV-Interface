@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="../Contents/default.css">
 		<script src="../Lib/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Scripts/ceScript_dev_0-1-4-1.js"></script>
+		<script type="text/javascript" src="../Lib/ceScript_dev_0-1-4-1.js"></script>
 		<script type="text/javascript" src="../Scripts/resources.js"></script>
-		<?php include '../php/display_playlists.php'?>
+		<?php include '../php/displays.php'?>
 		<!--<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script> -->
 	</head>
 	
@@ -23,7 +23,8 @@
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
-	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
+	<input type="image" name="logout" src="../Images/logoutbutton.jpg" class="button" id="logoutbutton" name='logout' value='logout' onclick="logout()">
+	<a href="./Settings.php"><input type="image" name="configuration" src="../Images/Configure.jpg" class="button" id="configurationbutton" name='configuration' value='configuration'></a>
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -36,7 +37,7 @@
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php?page=0' id="Playlists"><span>Playlists</span></a>
 
-			 <?php DisplayPlaylistsSubmenu($name);?>
+			 <?php DisplayPlaylistsSubmenu(DisplayPlaylists());?>
     </li>    
 </ul>
 </div>
@@ -52,44 +53,17 @@
 	<tr class="playlist_element" id="delete_all_playlists"> 
 	<td><a href="#" name="delete_all_playlists"><span> Delete all the Playlists </span></a> </td>
 	</tr>
-<!--</tbody>-->
-<!--</table>-->
-<!--<table id="Playlist_List" style="top: 275px;">-->
-<!--<tbody id="BodySongs">-->
 		<?php
 			
 	                $numPage = 0;
-        	        DisplayVariablesPerPages($name,$numPage,12);
+        	        DisplayVariablesPerPages(DisplayPlaylists(),$numPage,12);
 		
 			
 		?>
 </tbody>
 </table>
 
-
-<!-- <table id="Playlist_List">
-<tbody>
-	<tr class="playlist_element" id="plusplaylist"> 
-	<td><a href='#'><span> Create a new Playlist</span></a> </td>
-	</tr>
-	
-	<tr class="playlist_element"> 
-	<td><a href='#'><span> Playlist 1</span></a> </td>
-	</tr>
-	<tr class="playlist_element"> 
-	<td><a href='#'><span> Playlist 2</span></a></td>
-	</tr>
-	<tr class="playlist_element"> 
-	<td><a href='#'><span> Playlist 3</span></a> </td>
-	</tr>
-	<tr class="playlist_element"> 
-	<td><a href='#'><span> Playlist 4</span></a> </td>
-	</tr>
-</tbody>
-</thead>
-</table> -->
-
-<!-- <footer id="footer_play" style="display:none;">
+<!-- <footer>
 	<img src="../Images/previous_logo.jpg" id="previouslogo" style="display:none;">
 	<img src="../Images/play_logo.jpg" id="playlogo">
 	<img src="../Images/pause_logo.jpg" id="pauselogo" style="display:none;">

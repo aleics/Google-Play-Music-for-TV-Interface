@@ -7,8 +7,9 @@
         <style> .removed{display:none!important;} .invisible{visibility:hidden!important;width:0px!important;height:0px!important;overflow:hidden!important;}</style>
         <link rel="stylesheet" href="../Contents/default.css">
 		<script src="../Lib/jquery-2.0.3.js"></script>
- 		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
+ 		<script type="text/javascript" src="../Lib/menu_jquery.js"></script>
 		<script type="text/javascript" src="../Scripts/keycodes_explore.js"></script>
+		<script type="text/javascript" src="../Scripts/resources.js"></script>
 	</head>
 	
 	<title>Google Play for TV Box</title>
@@ -17,7 +18,8 @@
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
-	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
+	<input type="image" name="logout" src="../Images/logoutbutton.jpg" class="button" id="logoutbutton" name='logout' value='logout' onclick="logout()">
+	<a href="./Settings.php"><input type="image" name="configuration" src="../Images/Configure.jpg" class="button" id="configurationbutton" name='configuration' value='configuration'></a>
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -30,7 +32,7 @@
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php?page=0' id="Playlists"><span>Playlists</span></a>
         
-			 <?php include '/var/www/GooglePlayWebTv/php/display_playlists.php'; DisplayPlaylistsSubmenu($name);?>
+			 <?php include '/var/www/GooglePlayWebTv/php/displays.php'; DisplayPlaylistsSubmenu(DisplayPlaylists());?>
 
     </li>    
 </ul>
@@ -42,8 +44,6 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
         	<?php
-                include '/var/www/GooglePlayWebTv/php/display_tracks.php';
-
                 $songs_per_page = 14;		
 		$num_page = $_GET['page'];
 
@@ -52,7 +52,7 @@
                 if(isset($_GET['search'])){		
 		
 		$search_song = $_GET['search'];
-		$songs = SearchSong($search_song,$matrix);				
+		$songs = SearchSong($search_song,DisplayTracks());				
                 DisplayVariablesPerPages($songs,$num_page,$songs_per_page);
 
                 }

@@ -22,7 +22,8 @@
 	
 	<header>
 	<img src="../Images/google_toolbar.jpg" id="toolbarlogo">
-	<input type="image" src="../Images/logoutbutton.jpg" id="logoutbutton">
+	<input type="image" name="logout" src="../Images/logoutbutton.jpg" class="button" id="logoutbutton" name='logout' value='logout' onclick="logout()">
+	<a href="./Settings.php"><input type="image" name="configuration" src="../Images/Configure.jpg" class="button" id="configurationbutton" name='configuration' value='configuration'></a>
 	</header>
 	
 	<div id="toolbarmusic"> Music Menu </div>
@@ -34,8 +35,7 @@
 			<li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php?page=0' id="Playlists"><span>Playlists</span></a>
-
-			<?php include '/var/www/GooglePlayWebTv/php/display_playlists.php'; DisplayPlaylistsSubmenu($name);?>
+			<?php include '/var/www/GooglePlayWebTv/php/displays.php'; DisplayPlaylistsSubmenu(DisplayPlaylists());?>
 
     </li>    
 </ul>
@@ -52,18 +52,16 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
 	<?php
-		include '/var/www/GooglePlayWebTv/php/display_tracks.php';
-		
 		$songs_per_page = 14;
 
 		//Display the variables depending of the value of "page" in the url
 		if(isset($_GET['page'])){
                 $num_page = $_GET['page'];
-                DisplayVariablesPerPages($matrix,$num_page,$songs_per_page);
+                DisplayVariablesPerPages(DisplayTracks(),$num_page,$songs_per_page);
         	}	
 		
 		//The final page
-		$max_pages = NumberOfPages($matrix);
+		$max_pages = NumberOfPages(DisplayTracks());
 		
 	
 	?>
@@ -79,7 +77,7 @@
 
 $num_page_next = $num_page+1;
 
-if($num_page_next > NumberOfPages($matrix)){
+if($num_page_next > NumberOfPages(DisplayTracks())){
 	$num_page_next = $num_page;
 	$last_page = $num_page;
 }
