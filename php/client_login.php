@@ -63,7 +63,7 @@
 	$track_list = shell_exec('php lists.php');
 	echo "<pre>$track_list</pre>";
 	
-	/*$playlist_list = shell_exec('php playlist_list.php');
-	echo "<pre>$playlist_list</pre>";*/
-		
+	//Save Android ID
+	$android_id = $_POST['android_id'];
+        SaveAndroidId($android_id);	
 ?>

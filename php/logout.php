@@ -5,9 +5,10 @@
 		unlink('/var/www/GooglePlayWebTv/Info/TrackList.txt');
                 unlink('/var/www/GooglePlayWebTv/Info/Auth.txt');
                 unlink('/var/www/GooglePlayWebTv/Info/PlaylistList.txt');
-	//	unlink('/var/www/GooglePlayWebTv/Info/android.txt');
-	//	unlink('/var/www/GooglePlayWebTv/Info/user.txt');
-	//	unlink('/var/www/GooglePlayWebTv/Info/IDs.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/android.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/user.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/IDs.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/PlaylistSongList.txt');
 	}
 
 
