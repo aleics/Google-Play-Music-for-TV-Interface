@@ -3,38 +3,6 @@
 	//Include the functions library
         include 'functions.php';
 	
-
-	/*$chosensongs =   DisplaySongsOfPlaylists("Jazz");
-	echo "CHOSEN SONGS";
-	echo "\n";
-	echo sizeof($chosensongs);
-	echo "\n";
-        echo sizeof($chosensongs[0]);
-	
-	
-	echo "\n";
-	for($x=0;$x<sizeof($chosensongs[0]);$x++){
-		for($y=0;$y<sizeof($chosensongs);$y++){	echo $chosensongs[$y][$x];	echo "\n";}
-	}
-
-
-	$tracks = DisplayTracks();
-
-	echo "DISPLAY TRACKS";
-	echo "\n";
-        echo sizeof($tracks);
-        echo "\n";
-        echo sizeof($tracks[0]);
-
-
-        echo "\n";
-        for($x=0;$x<sizeof($chosensongs[0]);$x++){
-                for($y=0;$y<sizeof($chosensongs);$y++){ echo $tracks[$y][$x];      echo "\n";}
-        }*/
-
-
-
-
 	function DisplayPlaylists(){
 
         //Name of the file where is the playlist list information
