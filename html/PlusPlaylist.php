@@ -38,7 +38,7 @@
 </ul>
 </div>
 
-<header><a id="headerboxPlaylists">Playlists</a></header>
+<header><a class="headerbox">Playlists</a></header>
 
 <form action="./Playlists.php" method="post">
 		<input type="text" id="input_playlist" name="create_playlist" value="New Playlist"><br>

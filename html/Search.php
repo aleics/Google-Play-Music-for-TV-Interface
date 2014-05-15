@@ -38,7 +38,7 @@
 </ul>
 </div>
 
-	<header><a id="headerboxSearch">Search</a></header>
+	<header><a class="headerbox">Search</a></header>
 
 <table id="MyLibrarySongs">
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>

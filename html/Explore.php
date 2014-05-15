@@ -39,7 +39,7 @@
 </ul>
 </div>
 
-	<header><a id="headerboxExplore">Explore</a></header>
+	<header><a class="headerbox">Explore</a></header>
 
 	<form enctype="multipart/form-data"  method="get" action="Search.php" name="test">
 		 <input name="search" type="text" id="input_explore"><br>

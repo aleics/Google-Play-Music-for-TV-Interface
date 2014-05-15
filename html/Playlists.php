@@ -44,13 +44,18 @@
 
 
 <!-- Headers of every part of the menu -->
-<header><a id="headerboxPlaylists">Playlists</a></header>
+<header>
+
+<a class="headerbox">Playlists</a>
+<a class="headerbox" id="playlistheaderbox" style="display:none;"><?php echo $_GET['playlist']; ?></a>
+
+</header>
 <table id="Playlist_List">
 <tbody id="BodySongs">
-	<tr class="playlist_element" id="plusplaylist"> 
+	<tr class="variable_per_page" id="plusplaylist"> 
 	<td><a href="./PlusPlaylist.php" name="create_playlist"><span> Create a new Playlist</span></a> </td>
 	</tr>
-	<tr class="playlist_element" id="delete_all_playlists"> 
+	<tr class="variable_per_page" id="delete_all_playlists"> 
 	<td><a href="#" name="delete_all_playlists"><span> Delete all the Playlists </span></a> </td>
 	</tr>
 		<?php
@@ -62,6 +67,47 @@
 		?>
 </tbody>
 </table>
+
+<table id="Playlist_Song_List">
+<tbody id="BodySongs">
+
+	<?php
+		echo "<tr><td>Hola</td></tr>";	//DISPLAY PLAYLIST SELECTED
+	
+	?>
+
+
+</tbody>
+</table>
+
+<?php
+
+	$playlist_selected = false;
+
+	if($_GET['playlist']!= null){
+		$playlist_selected = true;
+	}
+
+?>
+
+
+<script>
+
+	document.getElementById("submenuallplaylists").style.display = 'none';
+	
+	var playlist_selected = "<?php echo $playlist_selected;?>";
+	
+	if(playlist_selected == true){
+		document.getElementById("Playlist_List").style.display = 'none';
+		$("#Playlist_Song_List").show();
+		$("#playlistheaderbox").show();
+	}
+
+  	
+
+</script>
+
+
 
 <!-- <footer>
 	<img src="../Images/previous_logo.jpg" id="previouslogo" style="display:none;">

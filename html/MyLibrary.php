@@ -43,7 +43,7 @@
 
 
 <!-- Headers of every part of the menu -->
-<header><a id="headerboxMyLibrary">My Library</a></header>
+<header><a class="headerbox">My Library</a></header>
 
 
 <!--MYLIBRARY-->

@@ -55,7 +55,7 @@
 
 
 <!-- Headers of every part of the menu -->
-<header><a id="headerboxListenNow">Settings</a></header>
+<header><a class="headerbox">Settings</a></header>
 
 <ul id="BodySettings">
 
