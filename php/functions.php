@@ -1,6 +1,23 @@
 <?php
+
+	//Classes
+	//Class of the user information
+	class UserInfo{
+
+        var $email;
+        var $password;
+
+        function addInfo($e,$p){
+                $this->email = $e;
+                $this->password = $p;
+
+        }
+
+        }
+
+
+
 	//functions needed
-	include 'ajax.php';		
 	//Get the Auth Variables (SID,LSID,AUTH)
 	function GetAuthentificationVariables($body){
 
@@ -25,12 +42,83 @@
 		fclose($fh);
 	}
 
+	//Save the SID,SSID
+	function SaveIDs($auth_var){
+		
+		$myFile = '/var/www/GooglePlayWebTv/Info/IDs.txt';
+		$fh = fopen($myFile,'w') or die ("can't open file");
+		fwrite($fh,$auth_var[0]);
+		fwrite($fh,$auth_var[1]);
+		fclose($fh);
+	}
+	
+	//Save user info
+	function SaveUserInfo($email,$password){
+		$myFile = '/var/www/GooglePlayWebTv/Info/user.txt';
+		$fh = fopen($myFile,'w') or die ("can't open file");
+                fwrite($fh,"Email: ".$email." ");
+		fwrite($fh,"\n");
+                fwrite($fh,"Password: ".$password);
+                fclose($fh);
+	}
+	
+	//Save Android ID
+	function SaveAndroidId($android_id){
+	
+	 	$myFile = '/var/www/GooglePlayWebTv/Info/android.txt';
+                $fh = fopen($myFile,'w') or die ("can't open file");
+                fwrite($fh,"android_id: ".$android_id);
+		fclose($fh);
+			
+	}	
 	
 	//Check if the user is Authentificated
 	function isAuth(){
 	return file_exists('/var/www/GooglePlayWebTv/Info/Auth.txt');
 	}
+	
+	//Read User Info
+	function ReadUserInfo(){
 
+	$myFile = fopen('/var/www/GooglePlayWebTv/Info/user.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/user.txt'));
+        fclose($myFile);
+
+
+	$email = str_replace("Email: ",'',$input);
+	$emaildef = substr_replace($email,'',strrpos($email,"Password: "));
+	return $emaildef;
+	}
+	
+	//Read Android ID
+	function ReadAndroidId(){
+	
+	$myFile = fopen('/var/www/GooglePlayWebTv/Info/android.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/android.txt'));
+        fclose($myFile);
+
+	$android = substr_replace($input,'',0,strlen("android_id: "));
+	return $android;
+
+	}
+
+
+	//Read User IDs	
+	function ReadIDs(){
+	
+	$myFile = fopen('/var/www/GooglePlayWebTv/Info/IDs.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/IDs.txt'));
+        fclose($myFile);
+
+	
+
+	$SID = substr_replace($input,'',0,strlen("SID="));
+        $SIDdef = substr_replace($SID,'',strrpos($SID,"LSID="));
+	
+	$LSID = str_replace($SIDdef,'',$input);
+	$LSIDdef = substr_replace($LSID,'',0,strlen("SID=LSID="));
+        return array($SIDdef,$LSIDdef);
+	}
 	//Read Auth variable from a file called 'Auth.txt'
 	function ReadAuth(){
 	
@@ -61,6 +149,15 @@
         fwrite($myFile,$output);
         fclose($myFile);
 	
+	}
+
+	//Save the whole songs associated on every Playlist in 'PlaylistSongList.txt'
+	function SavePlaylistSongList($output){
+
+	$myFile = fopen("/var/www/GooglePlayWebTv/Info/PlaylistSongList.txt","w") or die("can't open the file");
+        fwrite($myFile,$output);
+        fclose($myFile);
+
 	}
 
 	//Function of getting the name of song, album, id, etc...
@@ -207,7 +304,7 @@
 
 	}
 
-	 //Display variables per page
+	 //Display Variables per page
         function DisplayVariablesPerPages($matrix,$num_page,$variables_for_page){	    
 
         $start = 0+($variables_for_page*$num_page);
@@ -217,10 +314,10 @@
                 $end = sizeof($matrix);
         }
 
-	if(is_array($matrix[0])) {
+	if(is_array($matrix[0])) {  //This case will be for the SONGS LIST
 
         for($y=$start;$y<$end;$y++){
-                echo "<tr>";
+                echo "<tr class='variable_per_page'>";
                 for($x=0;$x<sizeof($matrix[0]);$x++){
                       
 			if(($x%3)==0){
@@ -234,11 +331,11 @@
         }
 	}
 	
-	else if(!is_array($matrix[0])){	
+	else if(!is_array($matrix[0])){	//This case will be for the PLAYLISTS LIST
 	
 	for($y=$start;$y<$end;$y++){
-                echo "<tr>";
-		echo "<td> <a href='#'><span>".$matrix[$y]."</td>"; 
+                echo "<tr class='variable_per_page'>";
+		echo "<td> <a href='?playlist=".$matrix[$y]."&page=0'><span>".$matrix[$y]."</td>"; 
 		echo "</tr>";
 
         }
@@ -288,10 +385,10 @@
 
 
 	function DisplayPlaylistsSubmenu($playlists){
-	echo "<ul>";
+	echo "<ul id='submenuallplaylists'>";
 	for($i=0;$i<sizeof($playlists);$i++){
 		
-		echo "<li id='submenuplaylists'><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."'>".$playlists[$i]."</a></li>";
+		echo "<li id='submenuplaylist'><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."&page=0'>".$playlists[$i]."</a></li>";
 	
 	}
 	echo "</ul>";

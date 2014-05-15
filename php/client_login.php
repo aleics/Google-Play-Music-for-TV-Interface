@@ -9,7 +9,10 @@
 	
 	//Include functions library
 	include 'functions.php';
-	
+
+	//Save Email and password
+	$user = new UserInfo();
+        $user->addInfo($_POST['user_name'],$_POST['password_name']);
 
 	//URL for Authentification	
 	$url = 'https://www.google.com/accounts/ClientLogin';
@@ -42,6 +45,10 @@
 	
 	SaveAuth($auth_var);
 	
+	SaveIDs($auth_var);
+	
+	SaveUserInfo($user->email,$user->password);
+	
 	}
 	//If it's not okey, send and error and return to index.php
 	catch(Guzzle\Http\Exception\BadResponseException $e){
@@ -53,10 +60,10 @@
 
 
 	//Execute all the scripts that are needed
-	$track_list = shell_exec('php track_list.php');
+	$track_list = shell_exec('php lists.php');
 	echo "<pre>$track_list</pre>";
 	
-	$playlist_list = shell_exec('php playlist_list.php');
-	echo "<pre>$playlist_list</pre>";
+	/*$playlist_list = shell_exec('php playlist_list.php');
+	echo "<pre>$playlist_list</pre>";*/
 		
 ?>
