@@ -1,47 +1,32 @@
 function logout(){
-	var x = document.getElementById("logoutbutton");
-	//alert("pressed");
-
-	$.ajax({
-       	type: "POST",
-       	url: "./php/ajax.php",
-      	data: { fname: "logout"},
-       	success: function(msg){ 
-            alert('Success!');
-       	}
-   	});
+	document.getElementById("logoutbutton").addEventListener('click', function(e){
+		        $.ajax({
+         		  url: '/GooglePlayWebTv/php/logout.php',
+         		  data: {'DeleteAllFiles' : "yes" },
+ 		          success: function (response) {
+             			window.location.href = "/GooglePlayWebTv/";
+          		  },
+		          error: function () {
+		             alert("ERROR");
+		          }
+		        });
+	
+			});
+	
 };
-
-/*$(document).ready(function () {
-
-var page = 0;
-        $('.arrowbtn').click(function(e){
-
-                if($(this).attr('value') == 1){page++;}
-                else if($(this).attr('value') == -1){page--;}
-
-                if(page>0){$("#arrowbtnleft").show(); }
-                else if(page==0){$("#arrowbtnleft").hide(); }
-                else if(page=maxPages){$('#arrowbtnright').hide();}
-
-	
-		window.location.href = "http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page=" + page;
-	
-
-});
-
-
-});*/
-
 
 
 $(document).ready(function () {
-		
-	if($('#arrowbtnleft').attr('value').val < 0) $("#arrowbtnleft").hide()
+	
+	var page_url = 'page=';
+	var url = location.search;
+	var page_url_loc = url.search(page_url);	
+
+	var num_page = parseInt(url.substring(page_url.length+1,url.length));	
+
+	if(num_page == 0){ $("#arrowbtnleft").hide();}
 	 
 });
-
-
 
 
 

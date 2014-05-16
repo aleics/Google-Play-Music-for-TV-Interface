@@ -1,5 +1,10 @@
+AddType text/css .css 
+
+
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @charset 'UTF-8';
+
+
 body {
 	background-color: white;
 	}
@@ -12,7 +17,7 @@ body {
 	border-top: 0px;
 	border-bottom: 0px;
 	border-left: 0px;
-	padding: 4px 442px 2px 15px;	
+	padding: 4px 442px 2px 15px;
 }
 
 /*Log out button*/
@@ -23,6 +28,16 @@ body {
 	left: 1103px;
 	top: 10px;
 }
+
+/*Configuration button*/
+#configurationbutton{
+	position: absolute;
+	height: 35px;
+	width: 35px;
+	left: 1050px;
+	top: 10px;
+}
+
 /*Music header menu logo*/
 #toolbarmusic{
 	position: absolute;
@@ -41,22 +56,26 @@ body {
 #toolbarmenu ul,
 #toolbarmenu ul li {
   list-style: none;
-  margin: 0;
-  padding: 0px 65px 0px 0px; 
+  margin: 0; 
   position: relative;
+}
+
+
+#toolbarmenu ul li li{
+  position: relative;
+  top: -140px;
+  width: 84px; 
 }
 
 #toolbarmenu ul {
   position: absolute;
   z-index: 597;
-  float: none;
   top: 180px;
 }
 #toolbarmenu ul li {
   float: none;
   vertical-align: middle;
-  padding: 0px 65px 0px 0px;
-} 
+  } 
 
 #toolbarmenu ul li.hover,
 #toolbarmenu ul li:hover {
@@ -133,7 +152,7 @@ tr.selected {
 
 
 /*SUB MENU*/
-/* #toolbarmenu ul ul{
+#toolbarmenu ul ul{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -154,18 +173,18 @@ tr.selected {
   padding: 10px 20px;
 }
 
- #toolbarmenu > ul > li > ul > li:hover{
-  border-left: 3px solid #fb8721;
+#toolbarmenu > ul > li > ul > li:hover{
+  /*border-left: 3px solid #fb8721;*/
   background: #F6F6F6;
 }
 
- #toolbarmenu > ul > li > ul > li{
+/*#toolbarmenu > ul > li > ul > li{
   border-left: 3px solid #d7d8da;
-}
+}*/
 
-#toolbarmenu ul li ul{
+/*#toolbarmenu ul li ul{
     display: none;
-}
+}*/
 
  #toolbarmenu ul li ul li a,
 #toolbarmenu ul li ul li a:link,
@@ -175,13 +194,9 @@ tr.selected {
   text-decoration: none;
   font-weight: 300;
 }
- */
 
-#headerboxListenNow,
-#headerboxRadio,
-#headerboxMyLibrary,
-#headerboxExplore,
-#headerboxPlaylists{
+
+.headerbox{
 	background-color: #fb8721;
 	font-family: 'Lato', sans-serif;
 	font-size: 24px;
@@ -252,7 +267,8 @@ tr.selected {
 
 
 
-#indexbutton {
+#indexbutton,
+#androididbutton {
         
         -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
         -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -343,7 +359,29 @@ tr.selected {
   background: #f6f6f6;
 }
 
+#BodySettings{
+	position: absolute;
+	width: 800px;
+        left: 225px;
+        top: 170px;
+        right: 100px;
+        font-family: 'Lato', sans-serif;
+        color: #8d8d8d;
+        float: none;
+	list-style-type: none;
+        }
+#BodySettings ul,
+#BodySettings ul li{
+	list-style-type: none;
+	font-size: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
+#BodySettings li ul li{
+	width: 50px;
+	border: 1px;
+}
 	
 #playlogo,
 #pauselogo{
@@ -372,7 +410,7 @@ tr.selected {
 	text-decoration: none;
 	color: #f3f3f3; 
 	position: absolute;
-	left: 602px;
+	left: 460px;
 	top: 355px;
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;	
@@ -400,3 +438,28 @@ tr.selected {
 	border-width: 1px;
 	border-color: #7c7c7c;	
 }
+
+#morebuttonsubmenuplaylist{
+        position: absolute;
+        left: 170px;
+	top: 5px;
+}
+#morebuttonsubmenuplaylist:hover{
+        border-style: solid;
+        border-width: 1px;
+        border-color: #7c7c7c;
+}
+
+#bigimage_ListenNow{
+	position: absolute;
+	left: 180px; 
+	top:180px;
+}
+#bigimage_ListenNow:hover{
+	opacity: 0.5;
+}
+
+
+
+
+

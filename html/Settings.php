@@ -44,7 +44,7 @@
 	
 	<div id='toolbarmenu'>
 		<ul id='toolbarmenu'>
-           		<li><a href='../main.php' id="ListenNow"><span>Listen Now</span></a></li>
+           		<li><a href='main.php' id="ListenNow"><span>Listen Now</span></a></li>
                         <li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
                         <li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
                         <li><a href='Playlists.php?page=0' id="Playlists"><span>Playlists</span></a>
@@ -61,7 +61,7 @@
 
 <li>Account information</li>
 	<ul>
-			<li>Email: <?php echo ReadUserInfo();?></li>
+			<li>User: <?php echo ReadUserInfo();?></li>
 	</ul>
 
 <li>Authentification</li>
@@ -85,7 +85,7 @@
 		</form>
 		
 		<form action="../php/android_id.php" method="post">
-		<input id="androididinput"  name="android_id" class="reintroduce_android"required="required" placeholder="It's another Android ID?" style="display:hidden;left: 160px; top: 496px; background-color: white; color: #fb8721; font-family: 'Lato', sans-serif; font-size: 16px; float: left;">
+		<input id="androididinput"  name="android_id" class="reintroduce_android" required="required" placeholder="It's another Android ID?" style="display:hidden;left: 160px; top: 496px; background-color: white; color: #fb8721; font-family: 'Lato', sans-serif; font-size: 16px; float: left;">
                 <button type="submit" id="androididbutton" class="reintroduce_android" style="display:hidden; left: 330px; top: 494px; float: left; ">Submit</button>
 		</form> 
 	</ul>
@@ -113,7 +113,7 @@
 	 $("#androididinput").show();
          $("#androididbutton").show();
          $("#androididdisplay").hide();
-	  $(".reintroduce_android").hide();
+	 $(".reintroduce_android").hide();
     }
 
 </script>

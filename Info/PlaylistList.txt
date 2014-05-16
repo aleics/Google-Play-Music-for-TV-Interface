@@ -37,6 +37,15 @@
     "deleted": false,
     "name": "Ambient",
     "type": "USER_GENERATED"
+   },
+   {
+    "kind": "sj#playlist",
+    "id": "2cd2e99a-3674-4a68-92b1-58e13ce9b5f5",
+    "creationTimestamp": "1400238987361447",
+    "lastModifiedTimestamp": "1400238987361447",
+    "deleted": false,
+    "name": "Prova",
+    "type": "USER_GENERATED"
    }
   ]
  }

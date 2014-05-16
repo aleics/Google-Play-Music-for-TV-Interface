@@ -32,12 +32,11 @@
 	
 	<div id='toolbarmenu'>
 		<ul id='toolbarmenu'>
-			<li><a href='../main.php' id="ListenNow"><span>Listen Now</span></a></li>
+			<li><a href='main.php' id="ListenNow"><span>Listen Now</span></a></li>
 			<li><a href='MyLibrary.php?page=0' id="MyLibrary"><span>My Library</span></a></li>
 			<li><a href='Explore.php' id="Explore"><span>Explore</span></a></li>
 			<li><a href='Playlists.php?page=0' id="Playlists"><span>Playlists</span></a>
 
-			 <?php DisplayPlaylistsSubmenu(DisplayPlaylists());?>
     </li>    
 </ul>
 </div>
@@ -68,11 +67,14 @@
 </tbody>
 </table>
 
-<table id="Playlist_Song_List">
+<table id="MyLibrarySongs">
 <tbody id="BodySongs">
 
 	<?php
-		echo "<tr><td>Hola</td></tr>";	//DISPLAY PLAYLIST SELECTED
+		$numPage = $_GET["page"];
+		$playlist = $_GET["playlist"];
+
+		DisplayVariablesPerPages(DisplaySongsOfPlaylists($playlist),$numPage,12);
 	
 	?>
 
@@ -93,13 +95,11 @@
 
 <script>
 
-	document.getElementById("submenuallplaylists").style.display = 'none';
 	
 	var playlist_selected = "<?php echo $playlist_selected;?>";
 	
 	if(playlist_selected == true){
 		document.getElementById("Playlist_List").style.display = 'none';
-		$("#Playlist_Song_List").show();
 		$("#playlistheaderbox").show();
 	}
 

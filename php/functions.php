@@ -401,9 +401,8 @@
 	}
 
 	function DisplayImageBlock($image_urls,$link,$type){
-	
 	switch($type){
-
+		
 		case 'big':
 		echo "<a href='".$link."'>";
 		echo "<figure id='bigimage_ListenNow' style='width:322px; height:322px;'>";	
@@ -416,8 +415,20 @@
 		echo "</a>";
 		break;
 
+		case 'little':
+		echo "<a href='".$link."'>";
+                echo "<figure id='littleimage_ListenNow' style='width:161px; height:161px;'>";
+                for($i=0;$i<sizeof($image_urls);$i++){
+
+                        echo "<img src='".$image_urls[$i]."' style='width:80px; height:81px;'>";
+
+                }
+                echo "</figure>";
+                echo "</a>";
+		break;
+
 	}
-	}
+	} 
 
 
 ?>

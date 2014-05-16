@@ -3003,7 +3003,7 @@
       "url": "http://lh3.ggpht.com/HoIS3qap0yDfA_2-EaC4hFnw99EAYxwXIS5orfOBc_01d-IJur78STivjwCJpg"
      }
     ],
-    "playCount": 0,
+    "playCount": 1,
     "totalTrackCount": 0,
     "discNumber": 0,
     "totalDiscCount": 0,
