@@ -2,7 +2,9 @@
 
 	//Include the functions library
         include 'functions.php';
-	
+
+
+	//Get the matrix of all playlists
 	function DisplayPlaylists(){
 
         //Name of the file where is the playlist list information
@@ -21,7 +23,7 @@
 	}
 
 
-	
+	//Get the matrix of all tracks
 	function DisplayTracks(){
 
 	//Name of the file where is the track list information
@@ -48,8 +50,9 @@
 	
 	return $matrix;
 	}
-
 	
+
+	//Get all the song of one playlist	
 	function DisplaySongsOfPlaylists($playlistname){
 
 
@@ -116,7 +119,8 @@
 	return $chosenmatrix;
 	}
 
-
+	
+	//Get the ID and (title,artist,album) of all songs
 	function GetIDandInfoofSongs(){
         
 	//Name of the file where is the track list information
@@ -180,5 +184,109 @@
 
 	}
 
+
+	//NOT FINISHED
+        //We enter the type(album,playlist,artist) and we show random image of this
+        function DisplayImageURL($type,$name){
+
+		switch($type){
+
+			case 'playlist':
+				$image_urls = GetPlaylistImage($name);
+				break;
+			
+			case 'album':
+				$image_urls = GetAlbumImage();
+				break;
+
+			case 'artist':
+				$image_urls = GetArtistImage();
+				break;
+
+		}
+	
+	return $image_urls;
+
+        }
+
+	//Return the image_url of 4 song of the playlist
+	function GetPlaylistImage($playlistname){
+
+	//Get IDs of all the playlist and compare the names
+        //Return the ID of the name of the playlist chosed
+        $matrixplaylists = GetIDofPlaylists($playlistname);
+
+        for($x=0;$x<sizeof($matrixplaylists[0]);$x++){
+
+        if($matrixplaylists[1][$x] == $playlistname){$chosenid = $matrixplaylists[0][$x]; }
+
+        }
+	
+	//GET the ID of the songs and the playlist and compare the playlists ID
+        //Return the IDs of the chosen songs
+        $matrixsongsofplaylist = GetIdSongsofeveryPlaylist();
+
+        $cont = 0;
+        for($x=0;$x<sizeof($matrixsongsofplaylist[0]);$x++){
+
+                if($matrixsongsofplaylist[0][$x] == $chosenid){
+                        $chosensongsid[$cont] = $matrixsongsofplaylist[1][$x];
+                        $cont++;
+                }
+
+        }
+	//Get 4 random songs of the chosensongsid
+	for($x=0;$x<4;$x++){
+		$num_rand = rand(0,(sizeof($chosensongsid)-1));
+		$randomsongsid[$x] = $chosensongsid[$num_rand];
+	}
+	
+	//Get the url of every random song chosed
+	//Compare the ids with all the ids and save the urls chosen
+	$cont = 0;
+	$chosenurl = array();
+	for($x=0;$x<sizeof($randomsongsid);$x++){
+			$url = GetImageUrlSong($randomsongsid[$x]);
+			$chosenurl[$cont] = $url;
+			$cont++;	
+	}
+
+	return $chosenurl;
+	
+
+	}
+
+
+	 //Return the url of the chosen id
+        function GetImageUrlSong($chosenid){
+
+        $fileName = "/var/www/GooglePlayWebTv/Info/TrackList.txt";
+
+        $str_url = '"url": "';
+	$str_id = '"id": "';
+
+        $url = array();
+	$id = array();
+
+        $url = GetVariableList($fileName,$str_url);
+	$id = GetVariableList($fileName,$str_id);
+
+	$matrixurlidsongs = array($id,$url);
+	
+	for($x=0;$x<sizeof($matrixurlidsongs[0]);$x++){
+			
+		
+		if($matrixurlidsongs[0][$x] == $chosenid){
+			$chosenurl = $matrixurlidsongs[1][$x];	
+		}
+
+
+	}
+
+	
+
+        return substr($chosenurl,2,-1);
+
+        }
 
 ?>

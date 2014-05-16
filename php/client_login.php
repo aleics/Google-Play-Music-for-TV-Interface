@@ -39,7 +39,7 @@
 	//Send the body string to get the diferents auth variables
 		$auth_var = GetAuthentificationVariables($body);
 	//If all is ok, go to main.php
-	header("Location: ../main.php");
+	header("Location: ../html/main.php");
 	
 	//echo $auth_var[2];
 	

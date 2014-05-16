@@ -388,45 +388,35 @@
 	echo "<ul id='submenuallplaylists'>";
 	for($i=0;$i<sizeof($playlists);$i++){
 		
-		echo "<li id='submenuplaylist'><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."&page=0'>".$playlists[$i]."</a></li>";
+		echo "<li id='submenuplaylist'><a href='http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/Playlists.php?playlist=".$playlists[$i]."&page=0'>".$playlists[$i]."</a><input type='image' id='morebuttonsubmenuplaylist' src='../Images/more.png'></li>";
 	
 	}
 	echo "</ul>";
 	}
 
+	function DisplayListenNowImage($image_urls){
 
+	
 
-	/*function logout(){
+	}
 
-	 if(isset($_GET['logout'])){
+	function DisplayImageBlock($image_urls,$link,$type){
+	
+	switch($type){
 
-                $logout = $_GET['logout'];
-		if($logout == "yes"){
-			header('Location: index.php');
+		case 'big':
+		echo "<a href='".$link."'>";
+		echo "<figure id='bigimage_ListenNow' style='width:322px; height:322px;'>";	
+		for($i=0;$i<sizeof($image_urls);$i++){
+		
+			echo "<img src='".$image_urls[$i]."' style='width:161px; height:161px;'>";
+
 		}
-         }	
+		echo "</figure>";
+		echo "</a>";
+		break;
 
-	}*/
-
-	//NOT FINISHED
-	function DisplayAlbumImages($matrix,$num_page){
-	
-	$images_for_page = 12;
-
-	$start = 0+($images_for_page*$num_page);
-	$end = 11+($images_for_page*$num_page);
-
-	if($end>=sizeof($matrix)){
-		$end = sizeof($matrix);
 	}
-	
-	for($y=$start;$y<$end;$y++){
-		echo "<tr>";
-                echo "<td> <img src=".$matrix[$y]." alt=''> </td>";
-                echo "</tr>";
-	}
-	
-	
 	}
 
 
