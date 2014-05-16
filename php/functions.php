@@ -417,7 +417,7 @@
 
 		case 'little':
 		echo "<a href='".$link."'>";
-                echo "<figure id='littleimage_ListenNow' style='width:161px; height:161px;'>";
+                echo "<figure id='littleimage_ListenNow' style='position: relative; width:161px; height:161px;'>";
                 for($i=0;$i<sizeof($image_urls);$i++){
 
                         echo "<img src='".$image_urls[$i]."' style='width:80px; height:81px;'>";

@@ -63,16 +63,17 @@ ctx.fillRect(10,10,322,322);*/
 <?php
 	$playlists = DisplayPlaylists();
 	
-	$chosenplaylist = $playlists[rand(0,(sizeof($playlists)-1))];
-	
 	for($x=0;$x<2;$x++){
+	$chosenplaylist = $playlists[rand(0,(sizeof($playlists)-1))];
 	$image_urls = DisplayImageURL('playlist',$chosenplaylist);
 	$image_urls_matrix[$x] = $image_urls;
-	$image_urls = array();
 	}
 	
 
-
+	echo $image_urls_matrix[0][0];
+	echo "\n";
+	echo $image_urls_matrix[1][0];
+        echo "\n";
 	DisplayImageBlock($image_urls_matrix[0],'#','big');
 	DisplayImageBlock($image_urls_matrix[1],'#','little');
 
