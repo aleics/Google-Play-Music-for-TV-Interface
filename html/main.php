@@ -70,16 +70,16 @@
 	echo "<div class='g-Content'>";
 	
 	echo "<div class='bigcard_ListenNow'>";
-	DisplayImageBlock($image_urls_matrix[0],'#','big',$allchosenplaylists[0]);
+	DisplayImageBlock($image_urls_matrix[0],'big',$allchosenplaylists[0]);
 	echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-	DisplayImageBlock($image_urls_matrix[1],'#','little',$allchosenplaylists[1]);
+	DisplayImageBlock($image_urls_matrix[1],'little',$allchosenplaylists[1]);
 	echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-        DisplayImageBlock($image_urls_matrix[2],'#','little',$allchosenplaylists[2]);
+        DisplayImageBlock($image_urls_matrix[2],'little',$allchosenplaylists[2]);
         echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-        DisplayImageBlock($image_urls_matrix[3],'#','little',$allchosenplaylists[3]);
+        DisplayImageBlock($image_urls_matrix[3],'little',$allchosenplaylists[3]);
         echo "</div>";
 		
 	echo "</div>";

@@ -400,29 +400,29 @@
 
 	}
 
-	function DisplayImageBlock($image_urls,$link,$type,$information){
+	function DisplayImageBlock($image_urls,$type,$information){
 	switch($type){
 		
 		case 'big':
 		echo "<div class='bigcard_image'>";
-		echo "<a href='".$link."'>";
+		echo "<a href='../html/Playlists?playlist=".$information[0]."&page=0'>";
 		DisplayImageCard($image_urls,'big');
 		echo "</a>";
 		echo "</div>";
 		echo "<div class='imagedetails_ListenNow'>";
-		echo "<a class='footerimage_ListenNow' href='".$link."' style='position: relative;'>".$information[0]."</a>";
+		echo "<a class='footerimage_ListenNow' href='../html/Playlists?playlist=".$information[0]."&page=0' style='position: relative;'>".$information[0]."</a>";
 		echo "<p class='footerimage_ListenNow'>".$information[1]."</p>";
 		echo "</div>";
 		break;
 
 		case 'little':
 		echo "<div class='littlecard_image'>";
-		echo "<a href='".$link."'>";
+		echo "<a href='../html/Playlists?playlist=".$information[0]."&page=0'>";
 		DisplayImageCard($image_urls,'little');
 		echo "</a>";
                 echo "</div>";
 		echo "<div class='imagedetails_ListenNow' id='little'>";
-                echo "<a class='footerimage_ListenNow' href='".$link."' id='little' style='position: relative;'>".$information[0]."</a>";
+                echo "<a class='footerimage_ListenNow' href='../html/Playlists?playlist=".$information[0]."&page=0' id='little' style='position: relative;'>".$information[0]."</a>";
                 echo "<p class='footerimage_ListenNow' id='little'>".$information[1]."</p>";
 		echo "</div>";
 		break;
