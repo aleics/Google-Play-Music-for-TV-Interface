@@ -400,35 +400,48 @@
 
 	}
 
-	function DisplayImageBlock($image_urls,$link,$type){
+	function DisplayImageBlock($image_urls,$link,$type,$information){
 	switch($type){
 		
 		case 'big':
+		echo "<div class='bigcard_image'>";
 		echo "<a href='".$link."'>";
-		echo "<figure id='bigimage_ListenNow' style='width:322px; height:322px;'>";	
-		for($i=0;$i<sizeof($image_urls);$i++){
-		
-			echo "<img src='".$image_urls[$i]."' style='width:161px; height:161px;'>";
-
-		}
+		DisplayImageCard($image_urls);
 		echo "</figure>";
 		echo "</a>";
+		echo "</div>";
+		echo "<div class='imagedetails_ListenNow'>";
+		echo "<a class='footerimage_ListenNow' href='".$link."' style='position: relative;'>".$information[0]."</a>";
+		echo "<p class='footerimage_ListenNow'>".$information[1]."</p>";
+		echo "</div>";
 		break;
 
 		case 'little':
-		echo "<a href='".$link."'>";
-                echo "<figure id='littleimage_ListenNow' style='position: relative; width:161px; height:161px;'>";
+		echo "<div class='littlecard_ListenNow'>";
+		echo "<a href='".$link."' style='height:322px; width:322px;'>";
                 for($i=0;$i<sizeof($image_urls);$i++){
 
                         echo "<img src='".$image_urls[$i]."' style='width:80px; height:81px;'>";
 
                 }
-                echo "</figure>";
-                echo "</a>";
+		echo "</a>";
+                echo "<br>";
+		echo "<div class='imagedetails_ListenNow'>";
+                echo "<p class='footerimage_ListenNow' id='namefooterimage_ListenNow' style='position: relative;'>".$information[0]."</p>";
+                echo "<p class='footerimage_ListenNow' id='typefooterimage_ListenNow'>".$information[1]."</p>";
+		echo "</div>";
+                echo "</div>";	
 		break;
 
 	}
 	} 
+	
+	function DisplayImageCard($image_urls){
 
+	for($i=0;$i<sizeof($image_urls);$i++){
+	
+		echo "<img src='".$image_urls[$i]."' style='width:161px; height:161px;'>";
+	}
+	}
 
 ?>

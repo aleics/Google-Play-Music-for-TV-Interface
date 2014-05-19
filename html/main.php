@@ -13,7 +13,7 @@
 		<script src="../Lib/jquery-2.0.3.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
  		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Scripts/keycodes.js"></script>
+		<!--<script type="text/javascript" src="../Scripts/keycodes.js"></script>-->
 		<script type="text/javascript" src="../Scripts/resources.js"></script>
 		
 	</head>
@@ -49,33 +49,31 @@
 <!-- Headers of every part of the menu -->
 <header><a class="headerbox">Listen Now</a></header>
 
-<!--<canvas height="500px" width="500px" id="micanvas" style="position:absolute; left: 205px; top:180px;">Su navegador</canvas>-->
 
-
-<script>
-/*var canvas = document.getElementById("micanvas");
-var ctx = canvas.getContext("2d");
-
-ctx.fillStyle="#f00";
-ctx.fillRect(10,10,322,322);*/
-</script>	
 
 <?php
 	$playlists = DisplayPlaylists();
 	
-	for($x=0;$x<2;$x++){
+	for($x=0;$x<3;$x++){
 	$chosenplaylist = $playlists[rand(0,(sizeof($playlists)-1))];
+	$allchosenplaylists[$x] = array($chosenplaylist,'Playlist');
 	$image_urls = DisplayImageURL('playlist',$chosenplaylist);
 	$image_urls_matrix[$x] = $image_urls;
 	}
 	
 
-	echo $image_urls_matrix[0][0];
+	/*echo $image_urls_matrix[0][0];
 	echo "\n";
 	echo $image_urls_matrix[1][0];
-        echo "\n";
-	DisplayImageBlock($image_urls_matrix[0],'#','big');
-	DisplayImageBlock($image_urls_matrix[1],'#','little');
+        echo "\n";*/
+	echo "\n";
+	echo sizeof($image_urls_matrix);
+	echo "<div class='g-Content'>";
+	echo "<div class='bigcard_ListenNow'>";
+	DisplayImageBlock($image_urls_matrix[0],'#','big',$allchosenplaylists[0]);
+	echo "</div>";
+	
+
 
 
 ?>

@@ -67,7 +67,7 @@
 	?>
 </tbody>;
 </thead>;
-</table>;
+splayImageBlock
 
 
 <!--Arrows next/previous page-->

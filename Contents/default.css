@@ -450,16 +450,50 @@ tr.selected {
         border-color: #7c7c7c;
 }
 
-#bigimage_ListenNow{
-	position: absolute;
-	left: 180px; 
+div.bigcard_ListenNow{
+	position: relative;
+	left: 220px; 
 	top:180px;
+	width: 322px;
+	height: 386px;
 }
-#bigimage_ListenNow:hover{
+div.bigcard_image:hover{
 	opacity: 0.5;
 }
 
+#littleimage_ListenNow{
+	position: relative;
+	top: -175px;
+	left: 370px;
+	float: right;
+}
 
+#littleimage_ListenNow:hover{
+	 opacity: 0.5;
+}
 
+a.footerimage_ListenNow{
+	color: black;
+	font-size: 18px;
+	text-decoration: none;
+}
+a.footerimage_ListenNow:hover{
+	text-decoration: underline;
+}
 
+p.footerimage_ListenNow{
+	color: #a6a6a6;
+}
 
+.footerimage_ListenNow{
+	font-family: 'Lato', sans-serif;
+	line-height: 80%;
+}
+
+div.imagedetails_ListenNow{
+	height: 60px;
+	width: 322px;
+	background-color: #f6f6f6;
+}
+div.imagedetails_ListenNow:hover{
+}
