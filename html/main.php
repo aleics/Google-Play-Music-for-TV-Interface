@@ -53,24 +53,35 @@
 
 <?php
 	$playlists = DisplayPlaylists();
+?>
+
+<?php
+	for($x=0;$x<4;$x++){
 	
-	for($x=0;$x<3;$x++){
-	$chosenplaylist = $playlists[rand(0,(sizeof($playlists)-1))];
+	
+	$chosenplaylist = $playlists[$x];
 	$allchosenplaylists[$x] = array($chosenplaylist,'Playlist');
 	$image_urls = DisplayImageURL('playlist',$chosenplaylist);
 	$image_urls_matrix[$x] = $image_urls;
+
 	}
 	
 
-	/*echo $image_urls_matrix[0][0];
-	echo "\n";
-	echo $image_urls_matrix[1][0];
-        echo "\n";*/
-	echo "\n";
-	echo sizeof($image_urls_matrix);
 	echo "<div class='g-Content'>";
+	
 	echo "<div class='bigcard_ListenNow'>";
 	DisplayImageBlock($image_urls_matrix[0],'#','big',$allchosenplaylists[0]);
+	echo "</div>";
+	echo "<div class='littlecard_ListenNow'>";
+	DisplayImageBlock($image_urls_matrix[1],'#','little',$allchosenplaylists[1]);
+	echo "</div>";
+	echo "<div class='littlecard_ListenNow'>";
+        DisplayImageBlock($image_urls_matrix[2],'#','little',$allchosenplaylists[2]);
+        echo "</div>";
+	echo "<div class='littlecard_ListenNow'>";
+        DisplayImageBlock($image_urls_matrix[3],'#','little',$allchosenplaylists[3]);
+        echo "</div>";
+		
 	echo "</div>";
 	
 
