@@ -53,6 +53,13 @@
 
 <?php
 	$playlists = DisplayPlaylists();
+
+	$tracks = DisplayTracks();
+	$cont = 0;
+	for($x=0;$x<sizeof($tracks);$x++){
+		$albums[$cont] = $tracks[$x][2];
+		$cont++;
+	}
 ?>
 
 <?php
@@ -60,28 +67,47 @@
 	
 	
 	$chosenplaylist = $playlists[$x];
-	$allchosenplaylists[$x] = array($chosenplaylist,'Playlist');
+	$display_playlist_info[$x] = array($chosenplaylist,'Playlist');
 	$image_urls = DisplayImageURL('playlist',$chosenplaylist);
-	$image_urls_matrix[$x] = $image_urls;
+	$display_playlist[$x] = $image_urls;
 
 	}
 	
+	
+	$display_album_info[0] = array($albums[40],'Album');
+	$display_album[0] = DisplayImageURL('album',$albums[40]);
+	
+	$display_album_info[1] = array($albums[100],'Album');
+        $display_album[1] = DisplayImageURL('album',$albums[100]);
+
+	$display_album_info[2] = array($albums[20],'Album');
+        $display_album[2] = DisplayImageURL('album',$albums[20]);
+
 
 	echo "<div class='g-Content'>";
 	
 	echo "<div class='bigcard_ListenNow'>";
-	DisplayImageBlock($image_urls_matrix[0],'big',$allchosenplaylists[0]);
+	DisplayAllImageBlock($display_playlist[0],'big',$display_playlist_info[0],'Playlist');
 	echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-	DisplayImageBlock($image_urls_matrix[1],'little',$allchosenplaylists[1]);
+	DisplayAllImageBlock($display_playlist[1],'little',$display_playlist_info[1],'Playlist');
 	echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-        DisplayImageBlock($image_urls_matrix[2],'little',$allchosenplaylists[2]);
+        DisplayAllImageBlock($display_playlist[2],'little',$display_playlist_info[2],'Playlist');
         echo "</div>";
 	echo "<div class='littlecard_ListenNow'>";
-        DisplayImageBlock($image_urls_matrix[3],'little',$allchosenplaylists[3]);
+        DisplayAllImageBlock($display_playlist[3],'little',$display_playlist_info[3],'Playlist');
         echo "</div>";
-		
+	echo "<div class='littlecard_ListenNow' id='firstalbum'>";
+        DisplayAllImageBlock($display_album[0],'little',$display_album_info[0],'Album');
+	echo "</div>";
+	echo "<div class='littlecard_ListenNow' id='secondalbum'>";
+        DisplayAllImageBlock($display_album[1],'little',$display_album_info[1],'Album');
+        echo "</div>";
+	echo "<div class='littlecard_ListenNow' id='thirdalbum'>";
+        DisplayAllImageBlock($display_album[2],'little',$display_album_info[2],'Album');
+        echo "</div>";
+	
 	echo "</div>";
 	
 

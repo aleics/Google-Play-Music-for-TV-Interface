@@ -321,10 +321,15 @@
                 for($x=0;$x<sizeof($matrix[0]);$x++){
                       
 			if(($x%3)==0){
-				 echo "<td style='width: 350px;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'><span>".$matrix[$y][$x]."<input type='image' id='morebutton' src='../Images/more.png'></td>";
+				 echo "<td style='width: 350px;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'>".$matrix[$y][$x]."</a><input type='image' id='morebutton' src='../Images/more.png'></td>";
 			}
 			else{
-				 echo "<td><a href='#'><span>".$matrix[$y][$x]."</td>";
+				 if($x==2){
+				 	echo "<td><a href='../html/albums.php?album=".$matrix[$y][$x]."&page=0'><span>".$matrix[$y][$x]."</a></td>";
+				 }
+				 else if($x==1){
+					echo "<td><a href='../html/artists.php?artist=".$matrix[$y][$x]."&page=0'><span>".$matrix[$y][$x]."</a></td>";
+				 }
 			}
                 }
                 echo "</tr>";
@@ -399,30 +404,57 @@
 	
 
 	}
+	
+	
+	function DisplayAllImageBlock($image_urls,$type,$information,$typeimage){
+	
+	switch($typeimage){
+		case 'Playlist':
+				DisplayImageBlock($image_urls,$type,$information,"../html/Playlists?playlist=".$information[0]."&page=0");	
+				break;
+		case 'Album':
+				DisplayImageBlock($image_urls,$type,$information,"../html/albums?album=".$information[0]."&page=0");
+				break;
+	}
+	}
 
-	function DisplayImageBlock($image_urls,$type,$information){
+	function DisplayImageBlock($image_urls,$type,$information,$link){
+	
 	switch($type){
 		
 		case 'big':
 		echo "<div class='bigcard_image'>";
-		echo "<a href='../html/Playlists?playlist=".$information[0]."&page=0'>";
+		echo "<a href='".$link."'>";
+	
+		if(is_array($image_urls)){	
 		DisplayImageCard($image_urls,'big');
+		}
+
+		else{
+		echo "<img src='".$image_urls."' style='width:382px; height:382px;'>";
+		}
+
 		echo "</a>";
 		echo "</div>";
 		echo "<div class='imagedetails_ListenNow'>";
-		echo "<a class='footerimage_ListenNow' href='../html/Playlists?playlist=".$information[0]."&page=0' style='position: relative;'>".$information[0]."</a>";
+		echo "<a class='footerimage_ListenNow' href='".$link."' style='position: relative;'>".$information[0]."</a>";
 		echo "<p class='footerimage_ListenNow'>".$information[1]."</p>";
 		echo "</div>";
 		break;
 
 		case 'little':
 		echo "<div class='littlecard_image'>";
-		echo "<a href='../html/Playlists?playlist=".$information[0]."&page=0'>";
-		DisplayImageCard($image_urls,'little');
+		echo "<a href='".$link."'>";
+		if(is_array($image_urls)){
+                DisplayImageCard($image_urls,'little');
+                }
+                else{
+                echo "<img src='".$image_urls."' style='width:160px; height:161px;'>";
+                }
 		echo "</a>";
                 echo "</div>";
 		echo "<div class='imagedetails_ListenNow' id='little'>";
-                echo "<a class='footerimage_ListenNow' href='../html/Playlists?playlist=".$information[0]."&page=0' id='little' style='position: relative;'>".$information[0]."</a>";
+                echo "<a class='footerimage_ListenNow' href='".$link."' id='little' style='position: relative;'>".$information[0]."</a>";
                 echo "<p class='footerimage_ListenNow' id='little'>".$information[1]."</p>";
 		echo "</div>";
 		break;
@@ -437,7 +469,7 @@
 	case 'big':
 	for($i=0;$i<sizeof($image_urls);$i++){
 	
-		echo "<img src='".$image_urls[$i]."' style='width:181px; height:181px;'>";
+		echo "<img src='".$image_urls[$i]."' style='width:191px; height:191px;'>";
 	}
 	break;
 

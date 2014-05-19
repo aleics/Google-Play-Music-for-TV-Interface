@@ -452,9 +452,13 @@ tr.selected {
 
 div.bigcard_ListenNow{
 	position: relative;
-	width: 362px;
+	width: 382px;
 	height: 500px;
 	overflow: hidden;
+}
+div.bigcard_image{
+	width: 382px;
+	height: 382px; 
 }
 div.bigcard_image:hover{
 	opacity: 0.5;
@@ -464,13 +468,13 @@ div.littlecard_ListenNow{
 	position: relative;
 	float: left;
 	bottom: 500px;
-	left: 391px;
+	left: 406px;
 	width: 161px;
         height: 193px;
 	vertical-align: top;
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
-	padding-right: 31px;
+	padding-right: 26px;
 }
 
 div.littlecard_image{
@@ -487,6 +491,7 @@ a.footerimage_ListenNow{
 	color: black;
 	font-size: 18px;
 	text-decoration: none;
+	top: 10px;
 }
 a.footerimage_ListenNow:hover{
 	text-decoration: underline;
@@ -497,9 +502,8 @@ p.footerimage_ListenNow{
 }
 
 a#little.footerimage_ListenNow{
-        color: black;
         font-size: 12px;
-        text-decoration: none;
+	top: 5px;
 }
 a#little.footerimage_ListenNow:hover{
         text-decoration: underline;
@@ -517,19 +521,26 @@ p#little.footerimage_ListenNow{
 
 div.imagedetails_ListenNow{
 	height: 60px;
-	width: 362px;
+	width: 382px;
 	background-color: #f6f6f6;
+	padding-left: 10px;
+	text-overflow: ellipsis;
 }
 div.imagedetails_ListenNow:hover{
 }
 
 div#little.imagedetails_ListenNow{
         height: 50px;
-        width: 161px;
+        width: 150px;
         background-color: #f6f6f6;
+	text-overflow: ellipsis;
 }
 
-
+a#little.footerimage_ListenNow,
+p#little.footerimage_ListenNow{
+	overflow: hidden;
+	text-overflow: clip;
+}
 
 div.g-Content{
 	position: absolute;
@@ -539,3 +550,25 @@ div.g-Content{
 	height: 400px;
 	
 }
+
+
+div#thirdalbum.littlecard_ListenNow{
+
+	position: absolute;
+	top: 230px;
+	left: 780px;
+}
+
+div#secondalbum.littlecard_ListenNow{
+	position absolute;
+	left: 32px;
+	top: -270px;
+}
+
+
+div#firstalbum.littlecard_ListenNow{
+        position: absolute;
+	top: 230px;
+}
+
+

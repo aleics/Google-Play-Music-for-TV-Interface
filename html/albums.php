@@ -53,19 +53,17 @@
 <tbody id="BodySongs">
 	<?php
 		$songs_per_page = 14;
+	
 
-			if(isset($_GET['page'])){
-				$select = 'normal';
-		
-				//Display the variables depending of the value of "page" in the url
-                		$num_page = $_GET['page'];
-				echo "<p class='normal_variables'>";
-                		DisplayVariablesPerPages(DisplayTracks(),$num_page,$songs_per_page);
-				echo "</p>";
 
-				//The final page
-		                $max_pages = NumberOfPages(DisplayTracks());
-		}
+		//Display the variables depending of the value of "page" in the url
+			
+		$num_page = $_GET['page'];
+		echo "<p class='album_variables'>";
+               	DisplayVariablesPerPages(GetTracksofAlbum($_GET['album']),$num_page,$songs_per_page);
+		echo "</p>";
+		//The final page
+                $max_pages = NumberOfPages(GetTracksofAlbum($_GET['album']));
 		
 	
 		?>
@@ -78,17 +76,16 @@
 <!--The num_page can't be higher than the number of pages-->
 <?php
 	$num_page_next = $num_page+1;
-	if($num_page_next > NumberOfPages(DisplayTracks())){
+	if($num_page_next > NumberOfPages(GetTracksofAlbum($_GET['album']))){
 		$num_page_next = $num_page;
 		$last_page = $num_page;
-
 	}
 
 ?>
 
 <!--Right arrow-->
 <?php
-	echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_next.'">';
+	echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/albums.php?album='.$_GET["album"].'&page='.$num_page_next.'">';
 ?>
 
 
@@ -107,7 +104,7 @@ if($num_page_prev < 0){
 
 <!--Left arrow-->
 <?php 
-	echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/MyLibrary.php?page='.$num_page_prev.'">';
+	echo '<a href="http://ec2-54-195-232-8.eu-west-1.compute.amazonaws.com/GooglePlayWebTv/html/albums.php?album='.$_GET["album"].'&page='.$num_page_prev.'">';
 
 
 ?>

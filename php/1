@@ -3,6 +3,10 @@
 	//Include the functions library
         include 'functions.php';
 
+
+	$albums =  DisplayAlbums();
+	echo $albums[2];
+
 	//Get the matrix of all playlists
 	function DisplayPlaylists(){
 
@@ -214,7 +218,7 @@
 				break;
 			
 			case 'album':
-				$image_urls = GetAlbumImage($name);
+				$image_urls = GetAlbumImage();
 				break;
 
 			case 'artist':
@@ -307,60 +311,4 @@
 
         }
 
-	//Get the title, artist and album of the chosenalbum
-	function GetTracksofAlbum($chosenalbum){
-	
-        $tracks = DisplayTracks();
-
-	$chosentracks = array();
-	$cont = 0;
-
-	//Get the variables form the track list
-	for($x=0;$x<sizeof($tracks);$x++){
-			if($tracks[$x][2] == $chosenalbum){
-				$chosentracks[$cont] = array($tracks[$x][0],$tracks[$x][1],$tracks[$x][2]);
-				$cont++;
-			}
-	}
-	return $chosentracks;
-	}
-	
-	//Get the url image of the chosenalbum
-	function GetAlbumImage($chosenalbum){
-	
-	//Name of the file where is the track list information
-        $fileName = "/var/www/GooglePlayWebTv/Info/TrackList.txt";
-
-        //Declaration of arrays
-        $songsurl = array();
-        $songsalbum = array();
-
-        //Title, artist, and album description
-        $str_url = '"url": "';
-        $str_album = '"album": "';
-
-
-        //Get the variables form the track list
-        $songsalbum = GetVariableList($fileName,$str_album);
-        $songsurl = GetVariableList($fileName,$str_url);
-	
-	for($x=0;$x<sizeof($songsurl);$x++){
-		$songsurl[$x] = substr($songsurl[$x],2,-1);
-	}
-
-	$matrixalbumurl = array($songsalbum,$songsurl);
-	
-	for($x=0;$x<sizeof($matrixalbumurl[0]);$x++){
-	
-		if($matrixalbumurl[0][$x] == $chosenalbum){
-			$chosenurl = $matrixalbumurl[1][$x];
-			break;
-		}		
-
-	}
-	
-	return $chosenurl;	
-
-	}
-	
 ?>
