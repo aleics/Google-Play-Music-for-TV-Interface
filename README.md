@@ -1,4 +1,4 @@
-Google Play Music API for a SmartTV Box
+Google Play Music API for a SmartTV
 ========================================
 
 This is the final Bachelor's project developed in the 'Fachhochschule Köln' in Cologne, Germany.
