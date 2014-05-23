@@ -41,7 +41,7 @@ The Authentification will be a POST with these specifications:
 
 Here you have one example using curl:
 
-    >> curl -d accountType=GOOGLE \ -d Email=jondoe@gmail.com \ -d Passwd=north23AZ \ -d service=sj \                            https://www.google.com/accounts/ClientLogin
+    >> curl -d accountType=GOOGLE \ -d Email=jondoe@gmail.com \ -d Passwd=north23AZ \ -d service=sj \          https://www.google.com/accounts/ClientLogin
 
 The response of this Authentification will be a json file with the **Auth**, **SID** and **LSID**. This three variables will be saved on the server and used to get access in every connection with Google in the future.
 
