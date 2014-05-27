@@ -14,6 +14,7 @@
 
 	$songids = array();
 	$songids = GetVariableList('/var/www/GooglePlayWebTv/Info/TrackList.txt','"id": "');
+	$key = '27f7313e-f75d-445a-ac99-56386a5fe879';
 
 	//$streamurl =  base64url_encode(hash_hmac("sha1","3b5b5ac0-c959-3ceb-a180-016013914492"."67plmd49qzzo","27f7313e-f75d-445a-ac99-56386a5fe879",true));
 	
@@ -27,7 +28,10 @@
 	echo "\n";
 	echo $streamurl['songid'];
 	echo "\n";
-	
+	echo "sig";
+	echo "\n";
+	echo $key;
+	echo "\n";	
 
 	function base64url_encode($data) { 
  		 return rtrim(strtr(base64_encode($data), '+/', '-_'), '='); 

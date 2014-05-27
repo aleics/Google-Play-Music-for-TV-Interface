@@ -119,6 +119,8 @@
 	$LSIDdef = substr_replace($LSID,'',0,strlen("SID=LSID="));
         return array($SIDdef,$LSIDdef);
 	}
+
+	
 	//Read Auth variable from a file called 'Auth.txt'
 	function ReadAuth(){
 	
@@ -130,6 +132,13 @@
 	
 	return $auth;
 	
+	}
+	
+	function ReadToken(){
+	$myFile = fopen('/var/www/GooglePlayWebTv/Info/token.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/token.txt'));
+        fclose($myFile);
+        return $input;
 	}
 	
 

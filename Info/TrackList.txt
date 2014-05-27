@@ -2220,7 +2220,7 @@
       "url": "http://lh3.ggpht.com/NS-RuirndNdOC55a0mDaB2ndS7jqfP8p7y6XlHoJqXpzeIq5RWnIFcWhwA44"
      }
     ],
-    "playCount": 0,
+    "playCount": 1,
     "totalTrackCount": 0,
     "discNumber": 0,
     "totalDiscCount": 0,

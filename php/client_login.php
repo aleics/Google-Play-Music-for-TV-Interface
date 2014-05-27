@@ -20,7 +20,7 @@
 	//Create Client variable and make the request with his parameters
 	$client = new Client($url);
 	$request = $client->post($url, array (
-		'Content-type' => 'application/x-www-form-urlencoded'
+		'Content-type' => 'application/x-www-form-urlencoded;charset=utf-8'
 	 ), 
 	array(
 		'accountType' => 'HOSTED_OR_GOOGLE',
@@ -36,6 +36,21 @@
 	
 	//Get the body of the response in string (true)		
 		$body = $response->getBody(true);
+		$headers = $response->getHeaders();
+		echo "HEADERS";
+		echo "\n";
+		foreach ($headers as $names => $values) {
+    			echo $names.": ".$values;
+			echo "\n";
+		}
+		$cookies = $response->getHeader('Set-Cookie',true);
+		echo "COOKIES";
+		echo "\n";
+		echo $cookies;
+		foreach($cookies as $names => $values){
+			echo $names.": ".$values;
+                        echo "\n";
+		}
 	//Send the body string to get the diferents auth variables
 		$auth_var = GetAuthentificationVariables($body);
 	//If all is ok, go to main.php
