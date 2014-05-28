@@ -45,6 +45,13 @@ Here you have one example using curl:
 
 The response of this Authentification will be a json file with the **Auth**, **SID** and **LSID**. This three variables will be saved on the server and used to get access in every connection with Google in the future.
 
+For more information check [here](https://developers.google.com/accounts/docs/AuthForInstalledApps).
+
+Token
+-----
+After the ClientLogin of the user, we will have to get some tokens to get the stream url of every song. To do this we will have to do different requests:
+
+1. First we will have to do a POST request:
 
 Lists
 -----
@@ -57,8 +64,8 @@ The next step of the connection is the request of the lists of the Tracks, Playl
 To do this connection we will have to send the request with these especifications:
  
  - Type: GET
- - Host: www.google.com
- - Path: /accounts/ClientLogin
+ - Host: www.googleapis.com
+ - Path: /sj/v1beta1/
  - Headers:
        - Authorization: GoogleLogin auth="YOUR_AUTH_TOKEN"
 
@@ -69,3 +76,5 @@ Here you have one example using curl:
     >> curl --header "Authorization: GoogleLogin auth=YOUR_AUTH_TOKEN" \ https://www.googleapis.com/sj/v1beta1/tracks
 
 The response of the list request will be a json file with all the information of every list (track id, playlist id, album's photo url, etc).
+
+For more information check [here](http://dpogue.ca/gmusic.html).
