@@ -267,7 +267,7 @@
       "url": "http://lh6.ggpht.com/NLuJUZlxhHck3ipq2krS159h5VE8M-oP7dtK3m8PuRrGyUykSH4IgxhmuZxcncswkqE2aW0j1Q"
      }
     ],
-    "playCount": 0,
+    "playCount": 1,
     "totalTrackCount": 0,
     "discNumber": 0,
     "totalDiscCount": 0,

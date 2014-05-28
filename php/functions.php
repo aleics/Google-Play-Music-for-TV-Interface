@@ -130,7 +130,7 @@
 
 	$auth = substr($input,strlen("Auth="));
 	
-	return $auth;
+	return trim(preg_replace('/\s+/', ' ', $auth));;
 	
 	}
 	
@@ -491,4 +491,107 @@
 	break;
 	}
 	}
+
+
+	//Function to decode the Stream url
+        function CleanStreamUrl($stream){
+
+                $stream_cl = substr($stream,strlen('{"tier":1,"url":"'),strlen($stream)-strlen('{"tier":1,"url":"')-2);
+                $stream_clean =  ReplaceSerieStringsinString(ReplaceSerieStringsinString($stream_cl,'\u003d','='),'\u0026','&');
+                $streamout =  $stream_clean.'&ps=f';
+
+        return $streamout;
+
+        }
+
+        //Function to replace strings in one string
+        function ReplaceSerieStringsInString($str,$oldstring,$newstring){
+
+
+        $tmpOldStrLength = strlen($oldstring);
+
+        while (($offset = strpos($str, $oldstring, $offset)) !== false) {
+          $str = substr_replace($str, $newstring, $offset, $tmpOldStrLength);
+        }
+
+        return $str;
+
+        }
+
+
+        //function to do a get request
+        function get_to_url($url,$headers){
+
+
+
+                $ch = curl_init($url);
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+                curl_setopt($ch, CURLOPT_VERBOSE, 1);
+                curl_setopt($ch, CURLOPT_HEADER, 1);
+                curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
+                if(!is_array($headers)){ curl_setopt($ch,CURLOPT_HTTPHEADER,array($headers));}
+                else{ curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);}
+
+                $output = curl_exec($ch);
+                $status = curl_getinfo($ch,CURLINFO_HTTP_CODE);
+
+                $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+                $header_response = substr($output, 0, $header_size);
+                $body = substr($output, $header_size);
+
+                curl_close($ch);
+                return array($body,$header_response,$status);
+        }
+
+	//function to turn array to url parameters
+        function array_to_url($data){
+            $fields = '';
+            foreach ($data as $key => $value) {
+                $fields .= $key . '=' . $value . '&';
+            }
+            rtrim($fields, '&');
+
+            return $fields;
+        }
+
+        //Function to Save the xt and sjsaid Token
+        function SavextToken($xt,$sjsaid){
+
+                $myFile = '/var/www/GooglePlayWebTv/Info/xttoken.txt';
+                $fh = fopen($myFile,'w') or die ("can't open file");
+                fwrite($fh,$xt);
+                fwrite($fh,"\n");
+                fwrite($fh,$sjsaid);
+                fclose($fh);
+
+        }
+
+        //Function to Read the xt Token from file
+        function ReadxtToken(){
+        $myFile = fopen('/var/www/GooglePlayWebTv/Info/xttoken.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/xttoken.txt'));
+        fclose($myFile);
+
+
+        $xt = str_replace("xt=",'',$input);
+        $xtdef = substr_replace($xt,'',strrpos($xt,"sjsaid="));
+        return trim(preg_replace('/\s+/', ' ', $xtdef));
+        }
+
+        //Function to Read the sjsaid Token from file
+        function ReadsjsaidToken(){
+
+        $myFile = fopen('/var/www/GooglePlayWebTv/Info/xttoken.txt',"rb");
+        $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/xttoken.txt'));
+        fclose($myFile);
+
+
+        $sj = substr_replace($input,'',0,strrpos($input,"sjsaid="));
+        $sjdef = str_replace("sjsaid=",'',$sj);
+        return $sjdef;
+
+        }
+
+
+
 ?>

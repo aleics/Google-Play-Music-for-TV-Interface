@@ -2,30 +2,45 @@
 
 	include 'functions.php';
 	
-	$auth = 'DQAAANQAAAAv4IIpGITx1e5K-cNlTe9_ow2-SvRLsHg4pt0G2Z6zbpDHH40QesGCYemRnNztPgqejR3da6V59VwbqqsVTUN9X1euI_4V1sUqZmWv8Oacv96mOKWU-fxZw4q0O-ia_w1FrO8xfNWkLoyBE7i_LGsSkNPlq-pprgdKEvpdRDmVDzvhE3FwjNzuKHUjoAGuIlk0Qp7gUeQxpNO5OpdPmu1je6YR-6FGoFfMaMLk0708rswfbYExC9hFvA0INX7-kBdTHmdW-qFjw7BsyINV1w-XeNtSVjmRzbprRWKChohZog';
-	$ch = curl_init();
-	$header = 'Authorization: GoogleLogin auth='.$auth;
-	$android_id = 'X-Device-ID: android-3a46416a879600c1';
+	$stream = GetStreamUrlAllTracks('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
+	$audio_file = GetAudioFile($stream);
 
-	curl_setopt($ch, CURLOPT_URL,"https://android.clients.google.com/music/mplay?songid=48dae700-23a3-31ab-adc6-7908ff88bcfa&pt=e&dt=pc&targetkbps=200&start=0");
-        //curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-        //curl_setopt($ch,CURLOPT_HTTP_VERSION,CURL_HTTP_VERSION_1_1);
-        curl_setopt($ch,CURLOPT_HTTPHEADER,array($header,$android_id));
-	//curl_setopt($ch, CURLOPT_POST, 1);
-	//curl_setopt($ch, CURLOPT_POSTFIELDS,"/songid=48dae700-23a3-31ab-adc6-7908ff88bcfa&pt=e&dt=pc&targetkbps=200&start=0");
-	
-	//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	
-	$server_output = curl_exec ($ch);
-	$headers = curl_getinfo($ch);
-	
-	curl_close ($ch);
+	//3. First step: get the stream url of the song selected
+        function GetStreamUrlAllTracks($songid){
+        $xt = ReadxtToken();
+        $sjsaid = ReadsjsaidToken();
 
-	echo $server_output;
-	/*echo $headers;
-	foreach($headers as $name => $values){
-		echo $name.": ".$values;
-		echo "\n";	
-	}*/
+        $cont = 0;
+        $url = 'https://play.google.com/music/play?u=0&songid='.$songid.'&pt=e';
+        $auth_header = 'Authorization: GoogleLogin auth='.ReadAuth();
+        $cookie_header = 'Cookie: sjsaid='.$sjsaid.'; xt='.$xt.';';
+        $headers = array($auth_header,$cookie_header);
+
+        $out = get_to_url($url,$headers);
+        $stream_url =  $out[0];
+
+        $stream_url_cl = CleanStreamUrl($stream_url);
+
+
+        $myFile = '/var/www/GooglePlayWebTv/Info/streamurl.txt';
+        $fh = fopen($myFile,'w') or die("can't open file");
+        fwrite($fh,$stream_url_cl);
+        fclose($fh);
+
+        return $stream_url_cl;
+        }
+
+        function GetAudioFile($stream_url){
+
+        $header = 'Referer: https://play.google.com/music/listen';
+
+        $audio_file = get_to_url($stream_url,$header);
+
+        return $audio_file;
+
+        }
+
+
+
 
 ?>
