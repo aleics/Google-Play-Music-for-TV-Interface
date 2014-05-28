@@ -47,11 +47,24 @@ The response of this Authentification will be a json file with the **Auth**, **S
 
 For more information check [here](https://developers.google.com/accounts/docs/AuthForInstalledApps).
 
-Token
------
-After the ClientLogin of the user, we will have to get some tokens to get the stream url of every song. To do this we will have to do different requests:
 
-1. First we will have to do a POST request:
+Tokens
+------
+After the ClientLogin of the user, we will have to get some tokens to get the stream url of every song. To do this we will have to do a GET request with these especifications:
+
+  - Type: GET
+  - Host: https://play.google.com
+  - Path: /music/listen/
+  - Headers:
+        - Authorization: GoogleLogin auth="YOUR_AUTH_TOKEN"
+  
+
+Here you have a curl example to get these values:
+
+     >> curl --header "Authorization: GoogleLogin auth=YOUR_AUTH_TOKEN" https://play.google.com/music/listen
+
+Thanks to this request, we will receive two tokens to get the stream url: **xt** token, and **sjsaid** token
+
 
 Lists
 -----
@@ -73,8 +86,50 @@ auth will be the Auth number that we saved in the authentif-ication step.
 
 Here you have one example using curl:
 
-    >> curl --header "Authorization: GoogleLogin auth=YOUR_AUTH_TOKEN" \ https://www.googleapis.com/sj/v1beta1/tracks
+    >> curl --header "Authorization: GoogleLogin auth=YOUR_AUTH_TOKEN" https://www.googleapis.com/sj/v1beta1/tracks
 
 The response of the list request will be a json file with all the information of every list (track id, playlist id, album's photo url, etc).
 
 For more information check [here](http://dpogue.ca/gmusic.html).
+
+
+Stream url
+--------------
+To get the stream url we will have to use the tokens that we get before: xt and sjsaid. Once, we received these tokens we will be able to get the stream url, and with this one the stream file of the song.
+
+To get the stream url we will have to do this request:
+
+  - Type: GET
+  - Host: https://play.google.com
+  - Path: /music/play?u=0&songid="SONGID"&pt=e
+  - Headers:
+        - Authorization: GoogleLogin auth="YOUR_AUTH_TOKEN"
+        - Cookie: sjsaid="YOUR_SJSAID_TOKEN"; xt="YOUR_XT_TOKEN";
+
+We received the **songid** of the song in the step before (lists) and the diferent tokens (**auth**,**sjsaid** and **xt**) too.
+
+The **u** and **pt** parameters are some values need it for the server
+
+Here you have one example using curl:
+
+    >> curl --header "Authorization: GoogleLogin auth=YOUR_AUTH_TOKEN" --header "Cookie: sjsaid=YOUR_SJSAID_TOKEN; xt=YOUR_XT_TOKEN;" https://play.google.com/music/play?u=0&songid=SONGID&pt=e
+
+
+The response of this request will be a json file that will have one url, where we can get the audio file
+
+Audio File
+----------
+To get the audio file we will had to get the url on the step before. Without this url, it's impossible to get the audio file.
+
+The request of this step is the next one:
+
+  - Type: GET
+  - Host: Stream_url_host (the url we will have a strange Host path)
+  - Headers:
+        - Referer: https://play.google.com/music/listen
+
+Here you have one example using curl.
+
+   >> curl --referer https://play.google.com/music/listen STREAM_URL
+
+With this request, we will get a audio file. To check that you get one audio file, only have to check the response headers (Content-type: audio/mpeg).
