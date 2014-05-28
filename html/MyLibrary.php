@@ -73,6 +73,14 @@
 </thead>
 
 
+<?php
+
+	$stream = GetStreamUrlTrack('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
+        $audio_file = GetAudioFile($stream);
+	SaveAudioFile($audio_file);
+
+?>
+
 <!--Arrows next/previous page-->
 
 <!--The num_page can't be higher than the number of pages-->

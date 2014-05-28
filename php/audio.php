@@ -2,10 +2,10 @@
 
 	include 'functions.php';
 	
-	$stream = GetStreamUrlAllTracks('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
+	$stream = GetStreamUrlTrack('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
 	$audio_file = GetAudioFile($stream);
 
-	//3. First step: get the stream url of the song selected
+	/*//3. First step: get the stream url of the song selected
         function GetStreamUrlAllTracks($songid){
         $xt = ReadxtToken();
         $sjsaid = ReadsjsaidToken();
@@ -42,5 +42,5 @@
 
 
 
-
+*/
 ?>

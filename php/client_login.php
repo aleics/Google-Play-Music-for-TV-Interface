@@ -80,5 +80,8 @@
 	
 	//Save Android ID
 	$android_id = $_POST['android_id'];
-        SaveAndroidId($android_id);	
+        SaveAndroidId($android_id);
+
+	//Save tokens necessary to get the audio stream
+	$audio_tokens = shell_exec('php tokenauth.php');	
 ?>

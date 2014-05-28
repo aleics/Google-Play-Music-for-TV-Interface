@@ -9,11 +9,12 @@
 		unlink('/var/www/GooglePlayWebTv/Info/user.txt');
 		unlink('/var/www/GooglePlayWebTv/Info/IDs.txt');
 		unlink('/var/www/GooglePlayWebTv/Info/PlaylistSongList.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/streamurl.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/token.txt');
+		unlink('/var/www/GooglePlayWebTv/Info/xttoken.txt');
 	}
-
-
-
 	
+	  	
 	/*if(isset($_POST['value']) && !empty($_POST['value'])) {    			
 		$value = $_POST['value'];
 		echo $value;

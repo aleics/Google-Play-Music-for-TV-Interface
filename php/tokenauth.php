@@ -3,7 +3,7 @@
 	//Include functions library
         include 'functions.php';
 
-	SaveIssueAuthToken();
+	//SaveIssueAuthToken();
 	GetxtToken();
 
 
@@ -24,7 +24,7 @@
 
 	//1. First step: get the xt token
 	//Get the IssueAuthToken that then we will use to get the xt Token
-	function SaveIssueAuthToken(){
+	/*function SaveIssueAuthToken(){
 	$ids = array();
 	$ids = ReadIDs();
 	
@@ -37,13 +37,13 @@
 	$command = 'curl --data "'.$fields.'" https://www.google.com/accounts/IssueAuthToken > ../Info/token.txt';
 
 	$token_shellcommand = shell_exec($command);
-	}
+	}*/
 
 
 	//2. Second step: get the xt token
 	//Get the xt token and the sjsaid to get the stream url
 	function GetxtToken(){
-	$token = trim(preg_replace('/\s+/', ' ', ReadToken()));
+	
 	$url_tokenauth = 'https://play.google.com/music/listen';
 	
 	$header = 'Authorization: GoogleLogin auth='.ReadAuth();
