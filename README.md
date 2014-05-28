@@ -130,6 +130,6 @@ The request of this step is the next one:
 
 Here you have one example using curl.
 
-   >> curl --referer https://play.google.com/music/listen STREAM_URL
+    >> curl --referer https://play.google.com/music/listen STREAM_URL
 
 With this request, we will get a audio file. To check that you get one audio file, only have to check the response headers (Content-type: audio/mpeg).
