@@ -3,6 +3,7 @@
 	//Include the functions library
         include 'functions.php';
 
+
 	//Get the matrix of all playlists
 	function DisplayPlaylists(){
 
@@ -165,6 +166,22 @@
 
         return array($songsid,$songstitle,$songsartist,$songsalbum);
         }
+
+
+	function GetIdofSong($song_name){
+	
+	$allsongs = GetIDandInfoofSongs();
+
+	for($x=0;$x<sizeof($allsongs[1]);$x++){
+	
+		if($song_name == $allsongs[1][$x]){
+			$chosensongid = $allsongs[0][$x];
+			}
+	}	
+	return $chosensongid;
+
+	}
+
 
 	//Return the ID and the name of every playlist in the file
 	function GetIDofPlaylists(){

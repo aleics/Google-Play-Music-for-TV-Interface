@@ -314,10 +314,12 @@
 	}
 
 	 //Display Variables per page
-        function DisplayVariablesPerPages($matrix,$num_page,$variables_for_page){	    
+        function DisplayVariablesPerPages($matrix,$num_page,$variables_for_page,$link_play){ 
 
         $start = 0+($variables_for_page*$num_page);
         $end = ($variables_for_page-1)+($variables_for_page*$num_page);
+
+	
 
         if($end>=sizeof($matrix)){
                 $end = sizeof($matrix);
@@ -328,9 +330,12 @@
         for($y=$start;$y<$end;$y++){
                 echo "<tr class='variable_per_page'>";
                 for($x=0;$x<sizeof($matrix[0]);$x++){
-                      
+                    
 			if(($x%3)==0){
-				 echo "<td style='width: 350px;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'><a href='#' style='position: relative; left: -32px;'>".$matrix[$y][$x]."</a><input type='image' id='morebutton' src='../Images/more.png'></td>";
+				
+				$link = $link_play."&id=".GetIdofSong($matrix[$y][$x]);
+				 echo "<td style='width: 350px;'><a href='".$link."' style='position: relative;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png' onclick='play()'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'>".$matrix[$y][$x]."</a><input type='image' id='morebutton' src='../Images/more.png'></td>";
+				//$link_str = substr($link,stripos($link,'id='));
 			}
 			else{
 				 if($x==2){
@@ -609,10 +614,10 @@
         $stream_url_cl = CleanStreamUrl($stream_url);
 
 
-        $myFile = '/var/www/GooglePlayWebTv/Info/streamurl.txt';
+        /*$myFile = '/var/www/GooglePlayWebTv/Info/streamurl.txt';
         $fh = fopen($myFile,'w') or die("can't open file");
         fwrite($fh,$stream_url_cl);
-        fclose($fh);
+        fclose($fh);*/
 
         return $stream_url_cl;
         }
@@ -631,10 +636,10 @@
 
 	//Function to save the audio file
 	function SaveAudioFile($audio_file){
-
+	//big endian
 	$myFile = '/var/www/GooglePlayWebTv/Contents/Audio/song.mp3';
         $fh = fopen($myFile,'w') or die("can't open file");
-        fwrite($fh,$audio_file);
+        fwrite($fh,$audio_file[0]);
         fclose($fh);
 	
 	}
