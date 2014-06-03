@@ -12,6 +12,7 @@
 		unlink('/var/www/GooglePlayWebTv/Info/streamurl.txt');
 		unlink('/var/www/GooglePlayWebTv/Info/token.txt');
 		unlink('/var/www/GooglePlayWebTv/Info/xttoken.txt');
+		unlink('/var/www/GooglePlayWebTv/Contents/Audio/song.mp3');
 	}
 	
 	  	
