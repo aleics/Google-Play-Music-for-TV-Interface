@@ -431,7 +431,7 @@ tr.selected {
 
 #morebutton{
 	position: absolute;
-	left: 290px;
+	left: 320px;
 }
 #morebutton:hover{
 	border-style: solid;
@@ -571,4 +571,14 @@ div#firstalbum.littlecard_ListenNow{
 	top: 230px;
 }
 
+footer#footerplaybuttons{
+
+	position: absolute;
+	top: 745px;
+	left: 285px;
+}
+audio{
+	width: 800px;
+
+}
 

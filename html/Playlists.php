@@ -9,10 +9,10 @@
         <title>Google Play TV Box</title>
         <style> .removed{display:none!important;} .invisible{visibility:hidden!important;width:0px!important;height:0px!important;overflow:hidden!important;}</style>
         <link rel="stylesheet" href="../Contents/default.css">
-		<script src="../Lib/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Lib/ceScript_dev_0-1-4-1.js"></script>
-		<script type="text/javascript" src="../Scripts/resources.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
+                <script type="text/javascript" src="../Scripts/resources.js"></script>
 		<?php include '../php/displays.php'?>
 		<!--<script type="text/javascript" src="../Scripts/keycodes_playlists.js"></script> -->
 	</head>
@@ -58,9 +58,29 @@
 	<td><a href="#" name="delete_all_playlists"><span> Delete all the Playlists </span></a> </td>
 	</tr>
 		<?php
+			$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";			
+			
+			if($_GET["play"] == null){
+                                $link = $actual_link.'&play=yes';
+                                }
+                                else{
+                                $link = $actual_link;
+                                }
+
+                                if ($_GET["id"] != null){
+
+                                $link = substr($actual_link,0,stripos($actual_link,'&id='));
+
+                                }
+
+                                else{
+
+                                $link = $actual_link;
+
+                             }
 			
 	                $numPage = 0;
-        	        DisplayVariablesPerPages(DisplayPlaylists(),$numPage,12);
+        	        DisplayVariablesPerPages(DisplayPlaylists(),$numPage,12,$link);
 		
 			
 		?>
@@ -74,7 +94,7 @@
 		$numPage = $_GET["page"];
 		$playlist = $_GET["playlist"];
 
-		DisplayVariablesPerPages(DisplaySongsOfPlaylists($playlist),$numPage,12);
+		DisplayVariablesPerPages(DisplaySongsOfPlaylists($playlist),$numPage,12,$link);
 	
 	?>
 
@@ -86,7 +106,7 @@
 
 	$playlist_selected = false;
 
-	if($_GET['playlist']!= null){
+	if($_GET['playlist'] != null){
 		$playlist_selected = true;
 	}
 
@@ -107,14 +127,16 @@
 
 </script>
 
+<footer id="footerplaybuttons" style="">
+
+<audio controls id="audio">
+  <source src="../Contents/Audio/song.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 
 
-<!-- <footer>
-	<img src="../Images/previous_logo.jpg" id="previouslogo" style="display:none;">
-	<img src="../Images/play_logo.jpg" id="playlogo">
-	<img src="../Images/pause_logo.jpg" id="pauselogo" style="display:none;">
-	<img src="../Images/next_logo.jpg" id="nextlogo" style="display:none;">
-</footer> -->
+</footer>
+
 
 </body>
 </html>

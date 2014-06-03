@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../Scripts/resources.js"></script>
 <?php
 
 	//Classes
@@ -334,8 +335,7 @@
 			if(($x%3)==0){
 				
 				$link = $link_play."&id=".GetIdofSong($matrix[$y][$x]);
-				 echo "<td style='width: 350px;'><a href='".$link."' style='position: relative;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png' onclick='play()'><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; right: 35px; top: -1px; visibility:hidden;'>".$matrix[$y][$x]."</a><input type='image' id='morebutton' src='../Images/more.png'></td>";
-				//$link_str = substr($link,stripos($link,'id='));
+				 echo "<td style='width: 350px;'><input type='image' id='playbuttontracklist' class='buttontracklist' src='../Images/play_logo.png' value='".GetIdofSong($matrix[$y][$x])."' onclick=\"playsong('".GetIdofSong($matrix[$y][$x])."')\"><input type='image' id='pausebuttontracklist' class='buttontracklist' src='../Images/pause_logo.png' style='position: relative; ; top: -1px; display:none;'>".$matrix[$y][$x]."<input type='image' id='morebutton' src='../Images/more.png'></td>";
 			}
 			else{
 				 if($x==2){

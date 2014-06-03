@@ -45,6 +45,13 @@
 <!-- Headers of every part of the menu -->
 <header><a class="headerbox">My Library</a></header>
 
+<script language="javascript" type="text/javascript">
+
+
+
+</script>
+
+
 
 <!--MYLIBRARY-->
 
@@ -52,6 +59,7 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
 	<?php
+		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		$songs_per_page = 14;
 
 			if(isset($_GET['page'])){
@@ -59,8 +67,29 @@
 		
 				//Display the variables depending of the value of "page" in the url
                 		$num_page = $_GET['page'];
+
+				if($_GET["play"] == null){
+				$link = $actual_link.'&play=yes';
+				}
+				else{
+				$link = $actual_link;
+				}
+
+				if ($_GET["id"] != null){
+
+				$link = substr($actual_link,0,stripos($actual_link,'&id='));
+
+				}
+
+				else{
+
+				$link = $actual_link;
+	
+				}
+
+
 				echo "<p class='normal_variables'>";
-                		DisplayVariablesPerPages(DisplayTracks(),$num_page,$songs_per_page);
+                		DisplayVariablesPerPages(DisplayTracks(),$num_page,$songs_per_page,$link);
 				echo "</p>";
 
 				//The final page
@@ -73,13 +102,7 @@
 </thead>
 
 
-<?php
 
-	$stream = GetStreamUrlTrack('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
-        $audio_file = GetAudioFile($stream);
-	SaveAudioFile($audio_file);
-
-?>
 
 <!--Arrows next/previous page-->
 
@@ -142,6 +165,16 @@ if($num_page_prev < 0){
 	}
 </script>
 
+
+<footer id="footerplaybuttons" style="">
+
+<audio controls id="audio">
+  <source src="../Contents/Audio/song.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+
+</footer>
 
 </body>
 </html>

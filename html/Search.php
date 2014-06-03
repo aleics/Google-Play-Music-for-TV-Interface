@@ -6,10 +6,11 @@
         <title>Google Play TV Box</title>
         <style> .removed{display:none!important;} .invisible{visibility:hidden!important;width:0px!important;height:0px!important;overflow:hidden!important;}</style>
         <link rel="stylesheet" href="../Contents/default.css">
-		<script src="../Lib/jquery-2.0.3.js"></script>
- 		<script type="text/javascript" src="../Lib/menu_jquery.js"></script>
-		<script type="text/javascript" src="../Scripts/keycodes_explore.js"></script>
-		<script type="text/javascript" src="../Scripts/resources.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script type="text/javascript" src="../Scripts/menu_jquery.js"></script>
+                <script type="text/javascript" src="../Scripts/resources.js"></script>
+
 	</head>
 	
 	<title>Google Play for TV Box</title>
@@ -44,16 +45,31 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
         	<?php
+		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 $songs_per_page = 14;		
 		$num_page = $_GET['page'];
 
 
                 //Display the variables depending of the value of "search" and "page" in the url
                 if(isset($_GET['search'])){		
+
+		if($_GET["play"] == null){
+                $link = $actual_link.'&play=yes';
+                }
+                else{
+                $link = $actual_link;
+                }
+		if ($_GET["id"] != null){
+		$link = substr($actual_link,0,stripos($actual_link,'&id='));
+		}
+		else{
+		$link = $actual_link;
+		}
+
 		
 		$search_song = $_GET['search'];
 		$songs = SearchSong($search_song,DisplayTracks());				
-                DisplayVariablesPerPages($songs,$num_page,$songs_per_page);
+                DisplayVariablesPerPages($songs,$num_page,$songs_per_page,$link);
 
                 }
 
@@ -126,6 +142,17 @@ if($num_page_next > NumberOfPages($songs)){
      }
 
 </script>
+
+<footer id="footerplaybuttons" style="">
+
+<audio controls id="audio">
+  <source src="../Contents/Audio/song.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+
+</footer>
+
 
 </body>
 </html>

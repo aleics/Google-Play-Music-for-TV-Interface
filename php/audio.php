@@ -2,8 +2,16 @@
 
 	include 'functions.php';
 	
-	$stream = GetStreamUrlTrack('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
-	$audio_file = GetAudioFile($stream);
+       $stream = GetStreamUrlTrack($_GET['id']);
+        $audio_file = GetAudioFile($stream);
+
+        SaveAudioFile($audio_file);
+
+	
+	echo $_GET['id'];
+
+	/*$stream = GetStreamUrlTrack('5c9bcd1b-b971-3e63-8f8e-3b2709a05480');
+	$audio_file = GetAudioFile($stream);*/
 
 	/*//3. First step: get the stream url of the song selected
         function GetStreamUrlAllTracks($songid){
@@ -42,5 +50,5 @@
 
 
 
-*/
+
 ?>
