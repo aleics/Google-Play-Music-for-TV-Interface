@@ -52,16 +52,32 @@
 <thead style="text-align:left; background-color: #bebebe;"><tr><th>Song</th> <th>Artist</th> <th>Album</th></tr></thead>
 <tbody id="BodySongs">
 	<?php
+		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		$songs_per_page = 14;
 	
+		if($_GET["play"] == null){
+		$link = $actual_link.'&play=yes';
+		}
+		else{
+                $link = $actual_link;
+                }
+
+                if ($_GET["id"] != null){
+                $link = substr($actual_link,0,stripos($actual_link,'&id='));
+                }
+                else{
+                $link = $actual_link;
+                }
 
 
-		//Display the variables depending of the value of "page" in the url
-			
+
+
+		//Display the variables depending of the value of "page" in the url			
 		$num_page = $_GET['page'];
 		echo "<p class='album_variables'>";
-               	DisplayVariablesPerPages(GetTracksofAlbum($_GET['album']),$num_page,$songs_per_page);
+               	DisplayVariablesPerPages(GetTracksofAlbum($_GET['album']),$num_page,$songs_per_page,$link);
 		echo "</p>";
+
 		//The final page
                 $max_pages = NumberOfPages(GetTracksofAlbum($_GET['album']));
 		
@@ -131,6 +147,15 @@ if($num_page_prev < 0){
 	}
 </script>
 
+<footer id="footerplaybuttons" style="">
+
+<audio controls id="audio">
+  <source src="../Contents/Audio/song.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+
+</footer>
 
 </body>
 </html>

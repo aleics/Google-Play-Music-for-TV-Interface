@@ -328,6 +328,27 @@
         return substr($chosenurl,2,-1);
 
         }
+	
+	//Get the title, artist and album of the chosenartist
+	function GetTracksofArtist($chosenartist){
+
+        $tracks = DisplayTracks();
+
+        $chosentracks = array();
+        $cont = 0;
+
+        //Get the variables form the track list
+        for($x=0;$x<sizeof($tracks);$x++){
+                        if($tracks[$x][1] == $chosenartist){
+                                $chosentracks[$cont] = array($tracks[$x][0],$tracks[$x][1],$tracks[$x][2]);
+                                $cont++;
+                        }
+        }
+        return $chosentracks;
+        }
+
+
+
 
 	//Get the title, artist and album of the chosenalbum
 	function GetTracksofAlbum($chosenalbum){
