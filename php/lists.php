@@ -1,4 +1,8 @@
 <?php
+	/*
+	LISTS.PHP
+	On this file we will get all lists of every Playlist, Tracklist, etc.
+	*/
 	//Include functions library
         include 'functions.php';
 

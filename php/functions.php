@@ -1,6 +1,9 @@
 <script type="text/javascript" src="../Scripts/resources.js"></script>
 <?php
-
+	/*
+	FUNCTIONS.PHP
+	On this file we will have all the functions needed on the API
+	*/
 	//Classes
 	//Class of the user information
 	class UserInfo{
@@ -135,6 +138,7 @@
 	
 	}
 	
+	//Read the tokens (xt, sjsaid)
 	function ReadToken(){
 	$myFile = fopen('/var/www/GooglePlayWebTv/Info/token.txt',"rb");
         $input = fread($myFile,filesize('/var/www/GooglePlayWebTv/Info/token.txt'));
@@ -217,13 +221,6 @@
 			}
 		$output[] = $info;
 		$info = array();
-		/*$info[] = $line;
-                	if(strpos($line,'"albumId":') !== false){
-				$output[] = $info;
-				unset($info);
-				$info = array();
-        	                $cont++;
-               		 }*/
                 }
 
         return $output;
@@ -361,6 +358,7 @@
 	}
 	}
 
+	//Return the number of pages that we will need for one list of tracks, playlists, etc.
 	function NumberOfPages($matrix){
 	
 	$numberelements = 0;
@@ -373,6 +371,7 @@
 	
 	}
 
+	//Search one song on the list of all songs
 	function SearchSong($name,$matrix){
 	
 	$number_all_songs = sizeof($matrix);
@@ -403,6 +402,7 @@
 	}
 
 
+	//Display the Playlists Submenu
 	function DisplayPlaylistsSubmenu($playlists){
 	echo "<ul id='submenuallplaylists'>";
 	for($i=0;$i<sizeof($playlists);$i++){
@@ -420,6 +420,7 @@
 	}
 	
 	
+	//Display the Image Block of Playlist, album, etc.	
 	function DisplayAllImageBlock($image_urls,$type,$information,$typeimage){
 	
 	switch($typeimage){
@@ -432,6 +433,7 @@
 	}
 	}
 
+	//Display the Image Block. Here you can choose the size: small or big.	
 	function DisplayImageBlock($image_urls,$type,$information,$link){
 	
 	switch($type){
@@ -476,6 +478,7 @@
 	}
 	} 
 	
+	//Display one Image Card
 	function DisplayImageCard($image_urls,$type){
 
 
@@ -613,12 +616,6 @@
 
         $stream_url_cl = CleanStreamUrl($stream_url);
 
-
-        /*$myFile = '/var/www/GooglePlayWebTv/Info/streamurl.txt';
-        $fh = fopen($myFile,'w') or die("can't open file");
-        fwrite($fh,$stream_url_cl);
-        fclose($fh);*/
-
         return $stream_url_cl;
         }
 
@@ -636,7 +633,6 @@
 
 	//Function to save the audio file
 	function SaveAudioFile($audio_file){
-	//big endian
 	$myFile = '/var/www/GooglePlayWebTv/Contents/Audio/song.mp3';
         $fh = fopen($myFile,'w') or die("can't open file");
         fwrite($fh,$audio_file[0]);

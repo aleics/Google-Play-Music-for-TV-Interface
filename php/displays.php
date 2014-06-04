@@ -1,4 +1,9 @@
 <?php
+	/*
+	DISPLAYS.PHP
+	On this file we will have different functions of displaying the differents lists: tracks, albums, etc.
+
+	*/
 
 	//Include the functions library
         include 'functions.php';

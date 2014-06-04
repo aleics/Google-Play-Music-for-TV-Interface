@@ -1,4 +1,11 @@
 <?php
+	/*CLIENT_LOGIN.PHP
+	With this php script we will authentificate the user and get the different auth tokens
+	After getting the authentification tokens we will execute others php scripts (tokenauth.php, lists.php) to get more variables needed
+	*/
+
+
+
 	//Include the Guzzle Library
 	require '../Lib/Guzzle/aws-autoloader.php';
 	use Guzzle\Http\Client;
