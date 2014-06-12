@@ -31,6 +31,7 @@ $(document).ready(function () {
 	var num_page = parseInt(url.substring(page_url.length+1,url.length));	
 
 	if(num_page == 0){ $("#arrowbtnleft").hide();}
+
 });	 
 
 //AJAX communication if the play button is pressed

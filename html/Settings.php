@@ -72,6 +72,10 @@
 		<?php $ID = ReadIDs(); echo "<div class='settingsvariables'><p>".$ID[0]."</p></div>";?>
 		<li>SSID: </li>
 		<?php echo "<div class='settingsvariables'><p>".$ID[1]."</p></div>";?>
+		<li>xt token: </li>
+		<?php echo "<div class='settingsvariables'><p>".ReadxtToken()."</p></div>";?>
+		<li>sjsaid token: </li>
+		<?php echo "<div class='settingsvariables'><p>".ReadsjsaidToken()."</p></div>";?>
 	</ul>
 
 <li>Android Device</li>
